@@ -7,12 +7,18 @@ export default class List extends PureComponent {
     this.state = {};
   }
 
+  handler = () => {
+    console.log('ok');
+  }
+
   render() {
-    return !!this.props.data && this.props.data.map(
+    const { data = [] } = props;
+
+    return data.map(
       (item, index) => (
         <React.Fragment key={item.id}>
           <h3>{index + 1}</h3>
-          <ListItem item={item} />
+          <ListItem item={item} onClick={handler} />
         </React.Fragment>
       )
     );
