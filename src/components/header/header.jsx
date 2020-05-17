@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function header() {
+export function Header() {
   return (
     <h1>List User</h1>
   )

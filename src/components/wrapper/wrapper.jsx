@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Header } from './header';
-import List from './List';
+
+import { Header } from '../header';
+import { List } from '../list';
 
 const user = { name: 'Jon', age: 25, id: '1' };
 const user1 = { name: 'Jek', age: 100, id: '2' };
@@ -9,7 +10,7 @@ const user3 = { name: 'Col', age: 35, id: '4' };
 const user4 = { name: 'Bob', age: 60, id: '5' };
 const mockData = [user, user1, user2, user3, user4];
 
-export default class Wrapper extends Component {
+export class Wrapper extends Component {
   render() {
     return (
       <div>

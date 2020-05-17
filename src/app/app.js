@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Wrapper from './components/Wrapper.jsx';
 
-function App() {
+import logo from './logo.svg';
+import './app.css';
+import Wrapper from '../components/wrapper';
+
+export function App() {
   const element = (<h1>Hello</h1>);
   const world = React.createElement(
     'h1',
@@ -21,5 +22,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

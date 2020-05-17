@@ -1,7 +1,8 @@
-import React, { PureComponent } from 'react'
-import { ListItem } from './ListItem';
+import React, { PureComponent } from 'react';
 
-export default class List extends PureComponent {
+import { ListItem } from '../list-item';
+
+export class List extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};
