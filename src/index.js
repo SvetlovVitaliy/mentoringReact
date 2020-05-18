@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { some } from './src/some';
-import './src/styles/styles.scss';
+import { some } from './some';
+import './styles/styles.scss';
 
 some();
 
