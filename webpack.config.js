@@ -1,11 +1,8 @@
-'use strict';
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const DEV = 'development';
-const PROD = 'production';
-const NODE_ENV = process.env.NODE_ENV || DEV;
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   context: __dirname + '/src',
@@ -16,75 +13,60 @@ module.exports = {
 
   output: {
     path: __dirname + '/build',
+    publicPath: '/',
     filename: '[name].bundle.js',
   },
 
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-      },
-      {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         loader: 'ts-loader',
       },
       {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {
         test: /\.(scss|sass)$/,
+        exclude: /node_modules/,
         use: [
-          //style-loader
+          // { loader: MiniCssExtractPlugin.loader },
           { loader: 'style-loader' },
-          // css-loader
           { loader: 'css-loader' },
-          // sass-loader
           { loader: 'sass-loader' },
         ],
-      }
-    ]
+      },
+      {
+        test: /\.(png|jpg|svg)$/,
+        loader: 'file?name=[path][name].[ext]?[hash]',
+      },
+    ],
   },
 
-
-  devtool: NODE_ENV === DEV ? 'source-map' : 'null',
-
-  // resolve: {
-  //   moduleDirectories: ['node_modules'],
-  //   extensions: ['', '.js']
-  // },
-
-  // resolveLoader: {
-  //   moduleDirectories: ['node_modules'],
-  //   moduleTemplates: ['*-loader', '*'],
-  //   extensions: ['', '.js']
-  // },
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
+  },
 
   plugins: [
-    new webpack.DefinePlugin({ NODE_ENV: JSON.stringify(NODE_ENV) }),
     new HtmlWebpackPlugin({
       template: '../public/index.html',
+      filename: 'index.html',
+      path: '/',
+    }),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          autoprefixer(),
+        ],
+      },
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
+      chunkFilename: 'css/[id.css]',
+      ignoreOrder: false,
     }),
   ],
-
-  devServer: {
-    contentBase: path.join(__dirname, 'build'),
-  },
-
-  // watch: NODE_ENV === DEV,
-
-  watchOptions: {
-    aggregateTimeout: 300,
-  }
 }
-
-// if (NODE_ENV === PROD) {
-//   module.exports.plugins.push(
-//     new webpack.optimize.UglifyJsPlugin({
-//       compress: {
-//         warnings: false,
-//         // drop_console: true,
-//         // unsafe: true
-//       }
-//     })
-//   );
-// }
