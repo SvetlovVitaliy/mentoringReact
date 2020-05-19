@@ -18,4 +18,10 @@ module.exports = merge(common, {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ],
+
+  watch: true,
+
+  watchOptions: {
+    aggregateTimeout: 300,
+  },
 });

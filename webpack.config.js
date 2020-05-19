@@ -8,7 +8,7 @@ module.exports = {
   context: __dirname + '/src',
 
   entry: {
-    main: './index.js',
+    main: './index.tsx',
   },
 
   output: {
