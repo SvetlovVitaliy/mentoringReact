@@ -3,8 +3,14 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+const DEV = 'development';
+const NODE_ENV = process.env.NODE_ENV || DEV;
 
 module.exports = {
+  mode: NODE_ENV,
+
   context: __dirname + '/src',
 
   entry: {
@@ -16,6 +22,8 @@ module.exports = {
     publicPath: '/',
     filename: '[name].bundle.js',
   },
+
+  devtool: NODE_ENV === DEV ? 'source-map' : 'null',
 
   module: {
     rules: [
@@ -51,6 +59,9 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify(NODE_ENV),
+    }),
     new HtmlWebpackPlugin({
       template: '../public/index.html',
       filename: 'index.html',
@@ -68,5 +79,24 @@ module.exports = {
       chunkFilename: 'css/[id.css]',
       ignoreOrder: false,
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    new CleanWebpackPlugin(),
   ],
+
+  devServer: {
+    contentBase: path.join(__dirname, 'build'),
+    host: 'localhost',
+    port: 3001,
+    hot: true,
+  },
+
+  watch: NODE_ENV === DEV,
+
+  watchOptions: {
+    aggregateTimeout: 300,
+  },
+
+  optimization: {
+    minimize: NODE_ENV !== DEV,
+  },
 }
