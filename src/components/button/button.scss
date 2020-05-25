@@ -1,0 +1,35 @@
+$button-background-color: rgba(66,66,66,0.68);
+$button-background-color-active: #F65261;
+$onPress: rgba(246,82,97,0.8);
+$white-color: #FFFFFF;
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 20px;
+  background-color: $button-background-color;
+  
+  &_title {
+    height: 19;
+    color: $white-color;
+    letter-spacing: normal;
+    margin: 0;
+  }
+
+  &__active {
+    background-color: $button-background-color-active;
+  }
+
+  &__first {
+    border-radius: 4px 0 0 4px;
+  }
+
+  &__last{
+    border-radius: 0 4px 4px 0;
+  }
+}
+
+.button:active {
+  background-color: $onPress;
+}

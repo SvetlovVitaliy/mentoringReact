@@ -1,23 +1,16 @@
 import React, { FunctionComponent } from 'react';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger';
 
 import { World } from '../components/world';
 import { ErrorBoundary } from '../services';
 import rootReducer from '../services/app/reducer';
 
-const logger = (store: any) => (next: any) => (action: any) => {
-  console.group(action.type)
-  console.info('dispatching', action)
-  let result = next(action)
-  console.log('next state', store.getState())
-  console.groupEnd()
-  return result
-}
+const logger = createLogger({ diff: true });
 
-const todoApp = combineReducers(rootReducer)
 const store = createStore(
-  todoApp,
+  rootReducer,
   applyMiddleware(
     logger,
   )

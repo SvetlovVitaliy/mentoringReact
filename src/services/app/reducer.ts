@@ -1,7 +1,14 @@
 import { combineReducers } from 'redux';
 
 const todos = (state = [], action: any) => {
-  console.log({ action });
+  switch (action.type) {
+    case "ACTION_ELEMENT": {
+      return {
+        ...state,
+        payload: action.payload,
+      };
+    }
+  }
   return state;
 }
 

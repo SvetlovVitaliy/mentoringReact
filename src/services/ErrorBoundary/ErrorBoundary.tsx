@@ -14,14 +14,14 @@ export class ErrorBoundary extends Component {
   }
 
   render() {
-    if (this.state.hasError) {
-      return (
-        <h1>
-          An error has occurred.
-        </h1>
-      );
-    }
+    const { children } = this.props;
+    const { hasError } = this.state;
+    const errorElement = (
+      <h1>
+        An error has occurred.
+    </h1>
+    );
 
-    return this.props.children;
+    return hasError ? errorElement : children;
   }
 }
