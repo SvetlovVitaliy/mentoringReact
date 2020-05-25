@@ -1,0 +1,73 @@
+$text-color: rgb(151, 151, 151);
+$border-color-opacity: rgba(151, 151, 151, 0.5);
+$white-color: #ffffff;
+
+.poster {
+  &_image {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+
+  &_wrapper {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 525px;
+    width: 325px;
+    margin: 25px;
+    // TODO: delete
+    background-color: grey;
+  }
+
+  &_wrapper:active {
+    opacity: 70%;
+  }
+
+  &_year {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 66px;
+    height: 26px;
+    border-radius: 4px;
+    border: 1px solid $border-color-opacity;
+
+    &__text {
+      color: $text-color;
+      margin: 0;
+    }
+  }
+
+  &_film-info {
+    display: flex;
+    flex-direction: column;
+
+    &__title-year {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 22px 0px 5px;
+    }
+
+    &__title {
+      display: block;
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: normal;
+      color: $white-color;
+      opacity: 70%;
+    }
+
+    &__gengre {
+      display: block;
+      font-size: 14px;
+      margin: 0px 0px 5px;
+      line-height: 18px;
+      letter-spacing: normal;
+      color: $white-color;
+      opacity: 50%;
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
 
-import { World } from '../components/world';
+import { HomePage } from '../pages';
 import { ErrorBoundary } from '../services';
 import rootReducer from '../services/app/reducer';
 
@@ -22,7 +22,7 @@ export const App: FunctionComponent<IAppProps> = () => {
   return (
     <ErrorBoundary>
       <Provider store={store}>
-        <World />
+        <HomePage />
       </Provider>
     </ErrorBoundary>
   );
