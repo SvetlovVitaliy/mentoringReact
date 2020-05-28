@@ -1,29 +1,23 @@
 import React, { FunctionComponent } from 'react';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
+import { BrowserRouter } from 'react-router-dom';
 
-import { HomePage } from '../pages';
 import { ErrorBoundary } from '../services';
-import rootReducer from '../services/app/reducer';
+import { store } from '../services/app/store-config';
 
-const logger = createLogger({ diff: true });
-
-const store = createStore(
-  rootReducer,
-  applyMiddleware(
-    logger,
-  )
-)
+import './styles.scss';
+import { AppRoute } from './app-route';
 
 interface IAppProps { }
 
 export const App: FunctionComponent<IAppProps> = () => {
   return (
     <ErrorBoundary>
-      <Provider store={store}>
-        <HomePage />
-      </Provider>
+      <BrowserRouter>
+        <Provider store={store}>
+          <AppRoute />
+        </Provider>
+      </BrowserRouter>
     </ErrorBoundary>
   );
 }

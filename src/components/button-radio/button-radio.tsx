@@ -17,7 +17,7 @@ export const ButtonRadio: FunctionComponent<IButtonRadioProps> = ({
   const hasButtons = buttons.length > 0;
 
   const handlePress = useCallback(
-    (title: string) => {
+    (title: any) => {
       onPress(title);
       setActiveTitle(title);
     },
