@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
 
 interface IPosterWrapperProps { }
 
@@ -6,8 +7,8 @@ export const PosterWrapper: FunctionComponent<IPosterWrapperProps> = ({
   children,
 }) => {
   return (
-    <div className={'poster_wrapper'}>
+    <Link className={'poster_wrapper'}  to={'/details'}>
       {children}
-    </div>
+    </Link>
   );
 };

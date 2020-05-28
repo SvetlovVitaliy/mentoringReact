@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
 
 import './styles.scss';
-import { Link } from 'react-router-dom';
 
 const NETFLIX = 'netflix';
 const ROULETTE = 'roulette';

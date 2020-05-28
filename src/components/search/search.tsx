@@ -25,28 +25,28 @@ interface ISearchProps { }
 
 export const Search: FunctionComponent<ISearchProps> = () => {
   const [value, setValue] = useState<string>('');
-  const [filterType, setFilterType] = useState<string>(TMovie.TITLE)
+  const [filterType, setFilterType] = useState<string>(TMovie.TITLE);
 
   const handleChange = useCallback(
     event => {
       setValue(event.currentTarget.value);
     },
     [],
-  )
+  );
 
   const handleRadioButton = useCallback(
     (type: string) => {
       setFilterType(type);
     },
     [],
-  )
+  );
 
   const handleSubmit = useCallback(
     () => {
       console.log('submit', value, filterType)
     },
     [value, filterType],
-  )
+  );
 
   return (
     <div className={'search'}>

@@ -5,3 +5,6 @@ export { Poster } from './poster-film';
 export { Header } from './header';
 export { HomeButton } from './home-button/home-button';
 export { Search } from './search';
+export { SortingBlock } from './sorting-block/sorting-block';
+export { Footer } from './footer/footer';
+export { MovieList } from './movie-list/movie-list';
