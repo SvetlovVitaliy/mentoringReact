@@ -1,10 +1,14 @@
 import React, { FunctionComponent } from 'react';
-import { Poster } from '../../components';
+import { DescriptionHeader, Footer, MovieList } from '../../components';
 
 interface IDetailsPageProps { }
 
 export const DetailsPage: FunctionComponent<IDetailsPageProps> = () => {
   return (
-    <Poster />
+    <>
+      <DescriptionHeader />
+      <MovieList />
+      <Footer />
+    </>
   );
 };

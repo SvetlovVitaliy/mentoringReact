@@ -1,0 +1,33 @@
+.description-header {
+  display: flex;
+  flex: 1;
+  min-height: 100px;
+  background-color: black;
+  padding: 81px 60px 71px;
+  position: relative;
+
+  &_link {
+    position: absolute;
+    left: 60px;
+    top: 20px;
+  }
+
+  &_content {
+    display: flex;
+    flex: 1;
+    background-color: red;
+  }
+}
+
+.sub-header {
+  display: flex;
+  flex: 1;
+  height: 70px;
+  background-color: #888888;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 118px;
+  color: white;
+  font-size: 16px;
+  letter-spacing: normal;
+}
