@@ -1,2 +1,7 @@
 /node_modules
+
 /build
+
+/coverage
+/src/**/**/__snapshots__
+*.snap

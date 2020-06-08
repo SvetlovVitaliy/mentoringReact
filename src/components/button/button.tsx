@@ -6,9 +6,9 @@ import './button.scss';
 interface IButtonProps {
   title: string;
   param?: string;
-  isActive: boolean;
-  isFirst: boolean;
-  isLast: boolean;
+  isActive?: boolean;
+  isFirst?: boolean;
+  isLast?: boolean;
   onPress: (title: string) => void;
 }
 
