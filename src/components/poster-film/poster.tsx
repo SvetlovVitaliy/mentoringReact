@@ -1,13 +1,12 @@
 import React, { FunctionComponent } from 'react';
 
-import { PosterWrapper } from './poster-wrapper';
-import { FilmInfo } from './film-info';
-import { PosterImage } from './poster-image';
-import './styles.scss';
+import { FilmInfo, PosterImage, PosterWrapper } from './sub-components';
+
+import './poster-film.scss';
 
 interface IPosterProps { }
 
-export const Poster: FunctionComponent<IPosterProps> = (props) => {
+export const Poster: FunctionComponent<IPosterProps> = () => {
   return (
     <PosterWrapper>
       <PosterImage url={''} />

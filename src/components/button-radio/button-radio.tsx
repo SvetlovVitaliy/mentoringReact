@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useCallback, useState, useEffect } from 'react';
 
-import { Button } from '../button/button';
+import { Button } from '../';
 import { IButtonItem } from './types';
+
 import './button-radio.scss';
 
 interface IButtonRadioProps {

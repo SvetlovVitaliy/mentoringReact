@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react';
 
 import { getButtonClassName } from './utils';
+
 import './button.scss';
 
 interface IButtonProps {

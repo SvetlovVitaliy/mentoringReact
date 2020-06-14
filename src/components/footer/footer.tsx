@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react';
 
-import { HomeButton } from '../home-button/home-button';
-import './styles.scss';
+import { HomeButton } from '../';
+
+import './footer.scss';
 
 interface IFooterProps { }
 

@@ -1,25 +1,13 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 
-import { ButtonRadio } from '../button-radio/button-radio';
-import { ButtonSearch } from '../button-search/button-search';
-import './styles.scss';
+import { ButtonRadio, ButtonSearch } from '../';
+import { TMovie } from './types';
+import { mockSearchButton } from '../../../mock/mock-data';
+
+import './search.scss';
 
 const SEARCH_TITLE = 'FIND YOUR MOVIE';
 const SEARCH_BY = 'SEARCH BY';
-export enum TMovie {
-  TITLE = 'TITLE',
-  GENGRE = 'GENGRE',
-}
-const mock = [
-  {
-    id: 'title',
-    title: TMovie.TITLE,
-  },
-  {
-    id: 'gengre',
-    title: TMovie.GENGRE,
-  },
-];
 
 interface ISearchProps { }
 
@@ -64,11 +52,11 @@ export const Search: FunctionComponent<ISearchProps> = () => {
           onChange={handleChange}
           value={value}
         />
-        <ButtonSearch onPress={handleSubmit} />
+        <ButtonSearch />
       </div>
       <div className={'search_radio'}>
         <p className={'search_radio__text'}>{SEARCH_BY}</p>
-        <ButtonRadio buttons={mock} onPress={handleRadioButton} />
+        <ButtonRadio buttons={mockSearchButton} onPress={handleRadioButton} />
       </div>
     </div>
   );

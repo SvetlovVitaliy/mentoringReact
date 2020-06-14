@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React, { FunctionComponent } from 'react';
 
 interface IPosterImageProps {
   url: string;
 }
 
-export const PosterImage: React.FunctionComponent<IPosterImageProps> = ({
+export const PosterImage: FunctionComponent<IPosterImageProps> = ({
   url,
 }) => {
   return (

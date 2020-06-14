@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { HomePage } from '../pages';
-import { DetailsPage } from '../pages/details/details';
+import { HomePage, DetailsPage } from '../pages';
 
 interface IAppRouteProps { }
 

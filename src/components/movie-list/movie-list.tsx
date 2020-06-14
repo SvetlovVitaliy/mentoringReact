@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 
-import './styles.scss';
-import { Poster } from '../poster-film';
+import { Poster } from '../';
+import { mockMovies } from '../../../mock/mock-data';
 
-const mockMovies = [1, 2, 3, 4, 5];
+import './movie-list.scss';
 
 interface IMovieListProps { }
 

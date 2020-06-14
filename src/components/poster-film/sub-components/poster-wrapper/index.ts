@@ -1,0 +1,1 @@
+export { PosterWrapper } from './poster-wrapper';

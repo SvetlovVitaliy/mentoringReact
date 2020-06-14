@@ -1,28 +1,10 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 
-import { ButtonRadio } from '../button-radio/button-radio';
-import './styles.scss';
+import { ButtonRadio } from '../';
+import { TSortType } from './types';
+import { mockSortButton } from '../../../mock/mock-data';
 
-export enum TSortAscDesc {
-  ASC = 'ASC',
-  DESC = 'DESC',
-}
-
-export enum TSortType {
-  RELEASE_DATE = 'RELEASE DATE',
-  RATING = 'RATING',
-}
-
-const mock = [
-  {
-    id: 'release_date',
-    title: TSortType.RELEASE_DATE,
-  },
-  {
-    id: 'rating',
-    title: TSortType.RATING,
-  },
-];
+import './sorting-block.scss';
 
 interface ISortingBlockProps { }
 
@@ -42,7 +24,7 @@ export const SortingBlock: FunctionComponent<ISortingBlockProps> = () => {
       <div className={'sorting-block_text'}>
         {'SORT BY'}
       </div>
-      <ButtonRadio buttons={mock} onPress={handleRadioButton} />
+      <ButtonRadio buttons={mockSortButton} onPress={handleRadioButton} />
     </div>
   );
 };

@@ -1,9 +1,9 @@
-import * as React from 'react';
+import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Button } from './button';
+import { Button } from '../';
 
-describe('button.jsx', () => {
+describe('button', () => {
   it('Snapshot button', () => {
     const onPress = jest.fn();
     const title = 'onPress';

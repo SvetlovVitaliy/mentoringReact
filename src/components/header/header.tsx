@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 
-import { HeaderWrapper } from './header-wrapper';
-import { HomeButton } from '../home-button/home-button';
-import './style.scss';
-import { Search } from '../search';
+import { HeaderWrapper } from './sub-components';
+import { HomeButton, Search } from '../';
+
+import './header.scss';
 
 interface IHeaderProps { }
 

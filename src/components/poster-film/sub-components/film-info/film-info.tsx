@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-import { YearFilm } from './year-film';
+import { YearFilm } from '../';
 
 interface IFilmInfoProps {
   title: string;

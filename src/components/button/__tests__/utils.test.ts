@@ -1,4 +1,4 @@
-import { getButtonClassName } from './utils';
+import { getButtonClassName } from '../utils';
 
 describe('utils button', () => {
   it('getButtonClassName should return correct className', () => {

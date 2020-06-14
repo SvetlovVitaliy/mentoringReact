@@ -4,12 +4,12 @@ import thunk from 'redux-thunk';
 
 import rootReducer from '../app/reducer';
 
-const logger = createLogger({ diff: true });
+const logger = createLogger({ diff: true, collapsed: true });
 
 export const store = createStore(
   rootReducer,
   applyMiddleware(
-    logger,
     thunk,
+    logger,
   )
 );

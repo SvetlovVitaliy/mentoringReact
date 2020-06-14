@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ErrorBoundary } from '../services';
 import { store } from '../services/app/store-config';
 
-import './styles.scss';
+import './app.scss';
 import { AppRoute } from './app-route';
 
 interface IAppProps { }
