@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import { fetchSomething } from '../../services/app/action';
 
@@ -7,13 +8,7 @@ import './button-search.scss';
 
 const SEARCH = 'SEARCH';
 
-const mapStateToProps = (state: any) => {
-  return {
-    todos: () => { },
-  }
-}
-
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch): IButtonSearchProps => {
   return {
     onPress: (action: any) => {
       dispatch(action());
@@ -37,4 +32,4 @@ const ButtonSearchDispatch: FunctionComponent<IButtonSearchProps> = ({ onPress }
   );
 };
 
-export const ButtonSearch = connect(mapStateToProps, mapDispatchToProps)(ButtonSearchDispatch)
+export const ButtonSearch = connect(null, mapDispatchToProps)(ButtonSearchDispatch)
