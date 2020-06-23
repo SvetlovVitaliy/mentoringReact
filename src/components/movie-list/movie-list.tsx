@@ -10,7 +10,7 @@ interface IMovieListProps { }
 export const MovieList: FunctionComponent<IMovieListProps> = () => {
   return (
     <div className={'movie-list'}>
-      {mockMovies.map(() => <Poster />)}
+      {mockMovies.map((item, index) => <Poster key={index} />)}
     </div>
   );
 };

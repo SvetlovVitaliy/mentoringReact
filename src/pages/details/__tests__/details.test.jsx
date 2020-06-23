@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { DetailsPage } from '../../';
+import { DetailsPage } from '../details';
 
 describe('details-page', () => {
   it('Snapshot button', () => {

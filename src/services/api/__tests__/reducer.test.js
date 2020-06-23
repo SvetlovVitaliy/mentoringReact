@@ -1,13 +1,13 @@
 import deepFreeze from 'deep-freeze';
 
-import { IMovie, initialState } from '../utils';
+import { initialState } from '../utils';
 import { maviesData } from '../reducer';
 import { responseFetchMoviesList, responseFetchMovieById } from '../action';
 
 describe('reducer moviesData', () => {
   const movie = {
     id: 1,
-  } as IMovie;
+  };
   const movieList = [movie, { ...movie, id: 2 }]
 
   it('RESPONSE_MOVIES_LIST should safe correct data', () => {

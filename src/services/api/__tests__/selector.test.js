@@ -1,12 +1,12 @@
 import deepFreeze from 'deep-freeze';
 
-import { IMovie, initialState } from '../utils';
+import { initialState } from '../utils';
 import { getMovieDetails, getMovieList } from '../selector';
 
 describe('moviesData request', () => {
   const movie = {
     id: 1,
-  } as IMovie;
+  };
   const movieList = [movie, { ...movie, id: 2 }]
 
   it('getMovieDetails should return movie', () => {
