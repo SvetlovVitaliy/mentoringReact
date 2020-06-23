@@ -1,15 +1,8 @@
 import { combineReducers } from 'redux';
+import { maviesData } from '../api/reducer';
+import { settingReducer } from '../setting/reducer';
 
-const todos = (state = [], action: any) => {
-  switch (action.type) {
-    case "ACTION_ELEMENT": {
-      return {
-        ...state,
-        payload: action.payload,
-      };
-    }
-  }
-  return state;
-}
-
-export default combineReducers({ todos })
+export const rootReducer = combineReducers({
+  maviesData,
+  settingReducer,
+});

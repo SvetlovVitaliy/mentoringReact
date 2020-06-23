@@ -9,6 +9,7 @@ module.exports = merge(common, {
   devtool: 'source-map',
 
   devServer: {
+    historyApiFallback: true,
     contentBase: path.join(__dirname, 'build'),
     host: 'localhost',
     port: 3001,

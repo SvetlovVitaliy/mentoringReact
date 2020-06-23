@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { fetchSomething } from '../../services/app/action';
+import { fetchMoviesList, fetchMovieBy } from '../../services/api/action';
 
 import './button-search.scss';
 
@@ -22,7 +22,7 @@ interface IButtonSearchProps {
 
 const ButtonSearchDispatch: FunctionComponent<IButtonSearchProps> = ({ onPress }) => {
   const onClick = useCallback(() => {
-    onPress(fetchSomething);
+    onPress(fetchMovieBy);
   }, [onPress]);
 
   return (
