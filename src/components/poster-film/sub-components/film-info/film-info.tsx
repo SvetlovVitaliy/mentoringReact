@@ -4,7 +4,7 @@ import { YearFilm } from '../';
 
 interface IFilmInfoProps {
   title: string;
-  year: number;
+  year: string;
   gengre: string;
 }
 

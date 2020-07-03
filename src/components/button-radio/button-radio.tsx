@@ -1,48 +1,61 @@
-import React, { FunctionComponent, useCallback, useState, useEffect } from 'react';
+import React, { FunctionComponent, useCallback, useState } from 'react';
+import { useSelector } from 'react-redux';
 
+import { getSortOrder } from '../../services/setting/selector';
+import { TSortingOrder } from '../../services/setting/utils';
 import { Button } from '../';
 import { IButtonItem } from './types';
 
 import './button-radio.scss';
 
-interface IButtonRadioProps {
+export interface IButtonRadioProps {
+  activeTab: string;
   buttons: IButtonItem[];
-  onPress: (title: string) => void;
+  onPress: Function;
 }
 
-export const ButtonRadio: FunctionComponent<IButtonRadioProps> = ({
+export interface IButtonRadioDispatchProps extends IButtonRadioProps {
+  changeSorting: Function;
+}
+
+export const ButtonRadio: FunctionComponent<IButtonRadioDispatchProps> = ({
+  activeTab = '',
   onPress,
   buttons = [],
+  changeSorting,
 }) => {
-  const [activeTitle, setActiveTitle] = useState<string>('');
+  const [activeTitle, setActiveTitle] = useState<string>(activeTab);
   const hasButtons = buttons.length > 0;
+  const sortOrder = useSelector(getSortOrder);
 
   const handlePress = useCallback(
-    (title: any) => {
-      onPress(title);
-      setActiveTitle(title);
+    (param: any) => {
+      const currentOrder = sortOrder === TSortingOrder.ASK ? TSortingOrder.DESC : TSortingOrder.ASK;
+      if (param !== activeTab) {
+        onPress(param);
+        sortOrder !== TSortingOrder.ASK && changeSorting(TSortingOrder.ASK);
+      } else {
+        changeSorting(currentOrder);
+      }
+      setActiveTitle(param);
     },
-    [onPress],
+    [onPress, activeTab, sortOrder],
   );
-
-  useEffect(() => {
-    hasButtons && setActiveTitle(buttons[0].title);
-  }, [buttons, hasButtons]);
 
   const renderButtons = useCallback(
     () => {
       return (
         hasButtons &&
-        buttons.map(({ id, title, param }: IButtonItem, index: number) => {
+        buttons.map(({ id, title }: IButtonItem, index: number) => {
           return (
             <Button
               title={title}
               onPress={handlePress}
-              isActive={activeTitle === title}
+              isActive={activeTitle === id}
               isFirst={index === 0}
               isLast={index === (buttons.length - 1)}
               key={id}
-              param={param}
+              param={id}
             />
           )
         })

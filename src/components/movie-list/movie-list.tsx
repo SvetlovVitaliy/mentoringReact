@@ -1,16 +1,19 @@
 import React, { FunctionComponent } from 'react';
+import { useSelector } from 'react-redux';
 
 import { Poster } from '../';
-import { mockMovies } from '../../../mock/mock-data';
 
 import './movie-list.scss';
+import { getMovieList } from '../../services/api/selector';
 
 interface IMovieListProps { }
 
 export const MovieList: FunctionComponent<IMovieListProps> = () => {
+  const movies = useSelector(getMovieList);
+
   return (
     <div className={'movie-list'}>
-      {mockMovies.map((item, index) => <Poster key={index} />)}
+      {movies.map((item, index) => <Poster key={index} movie={item} />)}
     </div>
   );
 };

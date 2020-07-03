@@ -1,39 +1,45 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 
 import { ButtonRadio, ButtonSearch } from '../';
-import { TMovie } from './types';
 import { mockSearchButton } from '../../../mock/mock-data';
 
 import './search.scss';
+import { setSearchString, setSearchBy } from '../../services/setting/action';
+import { getSearchString, getQueryParams, getSearchBy } from '../../services/setting/selector';
+import { fetchMoviesList } from '../../services/api/action';
 
 const SEARCH_TITLE = 'FIND YOUR MOVIE';
 const SEARCH_BY = 'SEARCH BY';
 
-interface ISearchProps { }
+export interface ISearchProps {
+  dispatch: Function;
+}
 
-export const Search: FunctionComponent<ISearchProps> = () => {
-  const [value, setValue] = useState<string>('');
-  const [filterType, setFilterType] = useState<string>(TMovie.TITLE);
+export const Search: FunctionComponent<ISearchProps> = ({ dispatch }) => {
+  const value = useSelector(getSearchString);
+  const queryString = useSelector(getQueryParams);
+  const searchBy = useSelector(getSearchBy);
 
   const handleChange = useCallback(
-    event => {
-      setValue(event.currentTarget.value);
+    ({ currentTarget: { value } }) => {
+      dispatch(setSearchString, value);
     },
-    [],
+    [dispatch],
   );
 
   const handleRadioButton = useCallback(
     (type: string) => {
-      setFilterType(type);
+      dispatch(setSearchBy, type);
     },
-    [],
+    [dispatch],
   );
 
   const handleSubmit = useCallback(
     () => {
-      console.log('submit', value, filterType)
+      dispatch(fetchMoviesList, queryString[0]);
     },
-    [value, filterType],
+    [dispatch, queryString],
   );
 
   return (
@@ -52,11 +58,11 @@ export const Search: FunctionComponent<ISearchProps> = () => {
           onChange={handleChange}
           value={value}
         />
-        <ButtonSearch />
+        <ButtonSearch onPress={handleSubmit} />
       </div>
       <div className={'search_radio'}>
         <p className={'search_radio__text'}>{SEARCH_BY}</p>
-        <ButtonRadio buttons={mockSearchButton} onPress={handleRadioButton} />
+        <ButtonRadio buttons={mockSearchButton} onPress={handleRadioButton} activeTab={searchBy} />
       </div>
     </div>
   );

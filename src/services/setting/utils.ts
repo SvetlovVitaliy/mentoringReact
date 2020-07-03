@@ -28,7 +28,7 @@ export const initialState: ISettingData = {
     searchString: '',
     sortOrder: TSortingOrder.ASK,
     filterByGenres: [],
-    sortBy: TSortingType.RATING,
+    sortBy: TSortingType.RELEASE_DATE,
     searchBy: TSearchType.TITLE,
   }
 }

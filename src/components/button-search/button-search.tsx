@@ -1,28 +1,16 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-
-import { fetchMoviesList, fetchMovieBy } from '../../services/api/action';
 
 import './button-search.scss';
 
 const SEARCH = 'SEARCH';
 
-const mapDispatchToProps = (dispatch: Dispatch): IButtonSearchProps => {
-  return {
-    onPress: (action: any) => {
-      dispatch(action());
-    }
-  }
-}
-
 interface IButtonSearchProps {
-  onPress: (action: any) => void;
+  onPress: () => void;
 }
 
-const ButtonSearchDispatch: FunctionComponent<IButtonSearchProps> = ({ onPress }) => {
+export const ButtonSearch: FunctionComponent<IButtonSearchProps> = ({ onPress }) => {
   const onClick = useCallback(() => {
-    onPress(fetchMovieBy);
+    onPress();
   }, [onPress]);
 
   return (
@@ -31,5 +19,3 @@ const ButtonSearchDispatch: FunctionComponent<IButtonSearchProps> = ({ onPress }
     </div>
   );
 };
-
-export const ButtonSearch = connect(null, mapDispatchToProps)(ButtonSearchDispatch)

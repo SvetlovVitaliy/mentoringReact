@@ -30,7 +30,7 @@ export const Button: FunctionComponent<IButtonProps> = ({
     () => {
       onPress(param);
     },
-    [title],
+    [param, onPress],
   )
 
   return (

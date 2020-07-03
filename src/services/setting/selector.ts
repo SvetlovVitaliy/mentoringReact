@@ -7,7 +7,7 @@ import {
   TSortingOrder,
 } from './utils';
 
-export const getSettingReducerState = (state: { settingData: ISettingData }) => state.settingData;
+export const getSettingReducerState = (state: { settingReducer: ISettingData }): ISettingData => state.settingReducer;
 
 export const getSearchParams = createSelector(
   getSettingReducerState,
