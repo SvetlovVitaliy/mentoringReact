@@ -1,30 +1,46 @@
 import { getButtonClassName } from '../utils';
 
 describe('utils button', () => {
-  it('getButtonClassName should return correct className', () => {
+  describe('getButtonClassName should return correct className', () => {
     const defaultClassName = 'button';
 
-    expect(getButtonClassName(false)).toBe(defaultClassName);
+    it('isActive=false && isFirst=false && isLast=false', () => {
+      expect(getButtonClassName(false)).toBe(defaultClassName);
+    });
 
-    expect(getButtonClassName(true))
-      .toBe(`${defaultClassName} ${defaultClassName}__active`);
+    it('isActive=true && isFirst=false && isLast=false', () => {
+      expect(getButtonClassName(true))
+        .toBe(`${defaultClassName} ${defaultClassName}__active`);
+    });
 
-    expect(getButtonClassName(false, true))
-      .toBe(`${defaultClassName} ${defaultClassName}__first`);
+    it('isActive=false && isFirst=true && isLast=false', () => {
+      expect(getButtonClassName(false, true))
+        .toBe(`${defaultClassName} ${defaultClassName}__first`);
+    });
 
-    expect(getButtonClassName(true, true))
-      .toBe(`${defaultClassName} ${defaultClassName}__active ${defaultClassName}__first`);
+    it('isActive=true && isFirst=true && isLast=false', () => {
+      expect(getButtonClassName(true, true))
+        .toBe(`${defaultClassName} ${defaultClassName}__active ${defaultClassName}__first`);
+    });
 
-    expect(getButtonClassName(false, false, true))
-      .toBe(`${defaultClassName} ${defaultClassName}__last`);
+    it('isActive=false && isFirst=false && isLast=true', () => {
+      expect(getButtonClassName(false, false, true))
+        .toBe(`${defaultClassName} ${defaultClassName}__last`);
+    });
 
-    expect(getButtonClassName(false, true, true))
-      .toBe(`${defaultClassName} ${defaultClassName}__first ${defaultClassName}__last`);
+    it('isActive=false && isFirst=true && isLast=true', () => {
+      expect(getButtonClassName(false, true, true))
+        .toBe(`${defaultClassName} ${defaultClassName}__first ${defaultClassName}__last`);
+    });
 
-    expect(getButtonClassName(true, true, true))
-      .toBe(`${defaultClassName} ${defaultClassName}__active ${defaultClassName}__first ${defaultClassName}__last`);
+    it('isActive=true && isFirst=false && isLast=true', () => {
+      expect(getButtonClassName(true, false, true))
+        .toBe(`${defaultClassName} ${defaultClassName}__active ${defaultClassName}__last`);
+    });
 
-    expect(getButtonClassName(true, false, true))
-      .toBe(`${defaultClassName} ${defaultClassName}__active ${defaultClassName}__last`);
-  })
-})
+    it('isActive=true && isFirst=true && isLast=true', () => {
+      expect(getButtonClassName(true, true, true))
+        .toBe(`${defaultClassName} ${defaultClassName}__active ${defaultClassName}__first ${defaultClassName}__last`);
+    });
+  });
+});

@@ -9,13 +9,17 @@ describe('moviesData request', () => {
   };
   const movieList = [movie, { ...movie, id: 2 }]
 
-  it('getMovieDetails should return movie', () => {
-    const newState = { ...initialState, movieId: movie };
-    expect(getMovieDetails(deepFreeze({ maviesData: newState }))).toEqual(movie);
+  describe('getMovieDetails', () => {
+    it('should return movie', () => {
+      const newState = { ...initialState, movieId: movie };
+      expect(getMovieDetails(deepFreeze({ maviesData: newState }))).toEqual(movie);
+    });
   });
 
-  it('getMovieList should return moviesList', () => {
-    const newState = { ...initialState, moviesList: movieList };
-    expect(getMovieList(deepFreeze({ maviesData: newState }))).toEqual(movieList);
+  describe('getMovieList', () => {
+    it('should return moviesList', () => {
+      const newState = { ...initialState, moviesList: movieList };
+      expect(getMovieList(deepFreeze({ maviesData: newState }))).toEqual(movieList);
+    });
   });
 });
