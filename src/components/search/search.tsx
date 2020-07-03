@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 import { ButtonRadio, ButtonSearch } from '../';
 import { mockSearchButton } from '../../../mock/mock-data';
@@ -20,6 +21,7 @@ export const Search: FunctionComponent<ISearchProps> = ({ dispatch }) => {
   const value = useSelector(getSearchString);
   const queryString = useSelector(getQueryParams);
   const searchBy = useSelector(getSearchBy);
+  const history = useHistory();
 
   const handleChange = useCallback(
     ({ currentTarget: { value } }) => {
@@ -37,9 +39,14 @@ export const Search: FunctionComponent<ISearchProps> = ({ dispatch }) => {
 
   const handleSubmit = useCallback(
     () => {
-      dispatch(fetchMoviesList, queryString[0]);
+      const textTrim = value.trim();
+      if (textTrim) {
+        history.push(`/search${queryString[0]}`);
+      } else {
+        history.push('/');
+      }
     },
-    [dispatch, queryString],
+    [dispatch, queryString, history, searchBy],
   );
 
   return (

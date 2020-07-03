@@ -12,13 +12,10 @@ export interface IButtonRadioProps {
   activeTab: string;
   buttons: IButtonItem[];
   onPress: Function;
+  changeSorting?: Function;
 }
 
-export interface IButtonRadioDispatchProps extends IButtonRadioProps {
-  changeSorting: Function;
-}
-
-export const ButtonRadio: FunctionComponent<IButtonRadioDispatchProps> = ({
+export const ButtonRadio: FunctionComponent<IButtonRadioProps> = ({
   activeTab = '',
   onPress,
   buttons = [],
@@ -33,9 +30,9 @@ export const ButtonRadio: FunctionComponent<IButtonRadioDispatchProps> = ({
       const currentOrder = sortOrder === TSortingOrder.ASK ? TSortingOrder.DESC : TSortingOrder.ASK;
       if (param !== activeTab) {
         onPress(param);
-        sortOrder !== TSortingOrder.ASK && changeSorting(TSortingOrder.ASK);
+        sortOrder !== TSortingOrder.ASK && changeSorting && changeSorting(TSortingOrder.ASK);
       } else {
-        changeSorting(currentOrder);
+        changeSorting && changeSorting(currentOrder);
       }
       setActiveTitle(param);
     },

@@ -10,10 +10,10 @@ interface IPosterProps {
 }
 
 export const Poster: FunctionComponent<IPosterProps> = ({
-  movie: { poster_path, genres, title, release_date } 
+  movie: { poster_path, genres, title, release_date, id } 
 }) => {
   return (
-    <PosterWrapper>
+    <PosterWrapper id={id}>
       <PosterImage url={poster_path} />
       <FilmInfo year={release_date} gengre={genres[0]} title={title} />
     </PosterWrapper>
