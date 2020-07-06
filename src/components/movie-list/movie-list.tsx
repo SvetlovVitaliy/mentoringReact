@@ -1,23 +1,23 @@
 import React, { FunctionComponent, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router';
+import { RouteComponentProps } from 'react-router';
+import { get, map } from 'lodash';
 
-import { getMovieList } from '../../services/api/selector';
 import { fetchMoviesList, fetchMovieBy } from '../../services/api/action';
 import { Poster } from '../';
 
 import './movie-list.scss';
+import { IMovie } from 'src/services/api/utils';
 
 const notFound = 'NOT FOUND';
 
 export interface IMovieListProps extends RouteComponentProps {
   fetchMovies: Function;
-  id?: number;
+  movies: IMovie[];
 }
 
-export const MovieList: FunctionComponent<IMovieListProps> = ({ fetchMovies, location, id = '' }) => {
-  const movies = useSelector(getMovieList);
-  const queryParams = location ? location.search : '';
+export const MovieList: FunctionComponent<IMovieListProps> = ({ fetchMovies, location, match, movies = [] }) => {
+  const queryParams = get(location, 'search', '');
+  const id = get(match, 'params.id', '');
 
   useEffect(() => {
     if (id) {
@@ -26,11 +26,11 @@ export const MovieList: FunctionComponent<IMovieListProps> = ({ fetchMovies, loc
     } else if (queryParams) {
       fetchMovies(fetchMoviesList, queryParams);
     }
-  }, [queryParams]);
+  }, [queryParams, id]);
 
   return (
     <div className={'movie-list'}>
-      {!!queryParams && movies.map((item, index) => <Poster key={index} movie={item} />)}
+      {!!queryParams && map(movies, (item, index) => <Poster key={index} movie={item} />)}
       {movies.length === 0 && (
         <div className={'movie-list__wrapper'}>
           <div className={'movie-list__not-found'}>{notFound}</div>

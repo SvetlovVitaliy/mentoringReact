@@ -13,7 +13,7 @@ export const Poster: FunctionComponent<IPosterProps> = ({
   movie: { poster_path, genres, title, release_date, id } 
 }) => {
   return (
-    <PosterWrapper id={id}>
+    <PosterWrapper id={id} genres={genres}>
       <PosterImage url={poster_path} />
       <FilmInfo year={release_date} gengre={genres[0]} title={title} />
     </PosterWrapper>

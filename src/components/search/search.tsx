@@ -9,15 +9,20 @@ import './search.scss';
 import { setSearchString, setSearchBy } from '../../services/setting/action';
 import { getSearchString, getQueryParams, getSearchBy } from '../../services/setting/selector';
 import { fetchMoviesList } from '../../services/api/action';
+import { TSortingOrder } from '../../services/setting/utils';
 
 const SEARCH_TITLE = 'FIND YOUR MOVIE';
 const SEARCH_BY = 'SEARCH BY';
 
 export interface ISearchProps {
   dispatch: Function;
+  sortOrder: TSortingOrder;
 }
 
-export const Search: FunctionComponent<ISearchProps> = ({ dispatch }) => {
+export const Search: FunctionComponent<ISearchProps> = ({ 
+  dispatch,
+  sortOrder,
+}) => {
   const value = useSelector(getSearchString);
   const queryString = useSelector(getQueryParams);
   const searchBy = useSelector(getSearchBy);
@@ -69,7 +74,7 @@ export const Search: FunctionComponent<ISearchProps> = ({ dispatch }) => {
       </div>
       <div className={'search_radio'}>
         <p className={'search_radio__text'}>{SEARCH_BY}</p>
-        <ButtonRadio buttons={mockSearchButton} onPress={handleRadioButton} activeTab={searchBy} />
+        <ButtonRadio buttons={mockSearchButton} onPress={handleRadioButton} activeTab={searchBy} sortOrder={sortOrder} />
       </div>
     </div>
   );

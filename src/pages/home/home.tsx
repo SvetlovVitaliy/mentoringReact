@@ -8,7 +8,7 @@ export const HomePage: FunctionComponent<IHomePageProps> = (props) => {
   return (
     <>
       <Header />
-      <SortingBlock />
+      <SortingBlock onclickRadioButton={() => { }} />
       <MovieList {...props} />
       <Footer />
     </>

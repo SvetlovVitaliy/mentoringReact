@@ -1,31 +1,43 @@
 import React, { FunctionComponent, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { RouteComponentProps } from 'react-router';
+import { get } from 'lodash';
 
 import { HomeButton } from '../';
+import { fetchMoviesList, fetchMovieBy } from '../../services/api/action';
+import { IMovie } from 'src/services/api/utils';
 
 import './description-header.scss';
-import { getQueryParams } from '../../services/setting/selector';
-import { fetchMoviesList, fetchMovieBy } from '../../services/api/action';
-import { getMovieDetails } from '../../services/api/selector';
 
 const SUB_TITLE = 'Films by Drama genre';
 
-export interface IDescriptionHeaderProps {
+export interface IDescriptionHeaderProps extends RouteComponentProps {
   dispatch: Function;
+  queryString: string;
+  movie: IMovie;
 }
 
 export const DescriptionHeader: FunctionComponent<IDescriptionHeaderProps> = ({
   dispatch,
+  queryString,
+  movie: {
+    poster_path,
+    runtime,
+    release_date,
+    title,
+    overview,
+    vote_average,
+    tagline
+  },
+  match,
 }) => {
-  const queryString = useSelector(getQueryParams);
-  const { poster_path, runtime, release_date, title, overview, vote_average, tagline } = useSelector(getMovieDetails);
   const currentDate = new Date(release_date);
   const formatRuntime = `${runtime} min`;
+  const currentId = get(match, 'params.id', '');
 
   useEffect(() => {
     dispatch(fetchMoviesList, queryString[1]);
-    dispatch(fetchMovieBy, '401478');
-  }, [dispatch, queryString]);
+    dispatch(fetchMovieBy, currentId);
+  }, [dispatch, queryString, currentId]);
 
   return (
     <>

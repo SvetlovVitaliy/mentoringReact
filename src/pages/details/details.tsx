@@ -6,7 +6,7 @@ interface IDetailsPageProps { }
 export const DetailsPage: FunctionComponent<IDetailsPageProps> = (props) => {
   return (
     <>
-      <DescriptionHeader />
+      <DescriptionHeader {...props} />
       <MovieList {...props} />
       <Footer />
     </>
