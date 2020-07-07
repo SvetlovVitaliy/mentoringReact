@@ -6,7 +6,7 @@ import { getQueryParams } from '../../../../services/setting/selector';
 function mapStateToProps(state: any, ownProps: any) {
   return {
     ...ownProps,
-    movies: getQueryParams(state),
+    queryString: getQueryParams(state),
   };
 }
 

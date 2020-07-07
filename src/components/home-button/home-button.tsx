@@ -1,18 +1,33 @@
-import React, { FunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
+import React, { FunctionComponent, useCallback } from 'react';
+import { useHistory } from 'react-router';
 
 import './home-button.scss';
+import { getHistoryParams } from '../search/utils';
 
 const NETFLIX = 'netflix';
 const ROULETTE = 'roulette';
 
-interface IHomeButtonProps { }
+interface IHomeButtonProps {
+  queryString: string[];
+  value: string;
+}
 
-export const HomeButton: FunctionComponent<IHomeButtonProps> = () => {
+export const HomeButton: FunctionComponent<IHomeButtonProps> = ({
+  queryString,
+  value,
+}) => {
+  const history = useHistory();
+  const handleButton = useCallback(
+    () => {
+      history.push(getHistoryParams(queryString[0], value));
+    },
+    [history, queryString, value],
+  )
+
   return (
-    <Link className={'home-button'} to={'/'}>
+    <div className={'home-button'} onClick={handleButton}>
       <b>{NETFLIX}</b>
       {ROULETTE}
-    </Link>
+    </div>
   );
 };

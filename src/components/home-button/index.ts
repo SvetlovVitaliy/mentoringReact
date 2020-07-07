@@ -1,1 +1,1 @@
-export { HomeButton } from './home-button';
+export { ConnectHomeButton as HomeButton } from './connect-home-button';

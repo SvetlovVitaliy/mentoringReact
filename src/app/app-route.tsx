@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { HomePage, DetailsPage, NotFound } from '../pages';
+import { HomePage, DetailsPage, NotFound, NotFoundPage } from '../pages';
 
 interface IAppRouteProps { }
 
@@ -10,7 +10,8 @@ export const AppRoute: FunctionComponent<IAppRouteProps> = () => {
     <Switch>
       <Route path={'/details/:id/'} component={DetailsPage} />
       <Route path={'/search'} component={HomePage} />
-      <Route path={'/'} component={NotFound} />
+      <Route exact path={'/'} component={NotFound} />
+      <Route path={'*'} component={NotFoundPage} />
     </Switch>
   );
 };

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 export interface IPosterWrapperProps {
   id: number;
   genres: string[];
-  queryString: string;
+  queryString: string[];
 }
 
 export const PosterWrapper: FunctionComponent<IPosterWrapperProps> = ({

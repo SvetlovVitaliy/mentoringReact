@@ -31,7 +31,7 @@ export const MovieList: FunctionComponent<IMovieListProps> = ({ fetchMovies, loc
   return (
     <div className={'movie-list'}>
       {!!queryParams && map(movies, (item, index) => <Poster key={index} movie={item} />)}
-      {movies.length === 0 && (
+      {(movies.length === 0 || !queryParams) && (
         <div className={'movie-list__wrapper'}>
           <div className={'movie-list__not-found'}>{notFound}</div>
         </div>

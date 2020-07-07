@@ -7,6 +7,7 @@ import { mockSearchButton } from '../../../mock/mock-data';
 import './search.scss';
 import { setSearchString, setSearchBy } from '../../services/setting/action';
 import { TSortingOrder, TSortingType } from '../../services/setting/utils';
+import { getHistoryParams } from './utils';
 
 const SEARCH_TITLE = 'FIND YOUR MOVIE';
 const SEARCH_BY = 'SEARCH BY';
@@ -19,7 +20,7 @@ export interface ISearchProps {
   searchBy: TSortingType;
 }
 
-export const Search: FunctionComponent<ISearchProps> = ({ 
+export const Search: FunctionComponent<ISearchProps> = ({
   dispatch,
   sortOrder,
   value,
@@ -31,7 +32,10 @@ export const Search: FunctionComponent<ISearchProps> = ({
 
   const handleChange = useCallback(
     ({ currentTarget: { value } }) => {
-      dispatch(setSearchString, value);
+      const textTrim = value.trim();
+      if (textTrim) {
+        dispatch(setSearchString, textTrim);
+      }
     },
     [dispatch],
   );
@@ -45,14 +49,9 @@ export const Search: FunctionComponent<ISearchProps> = ({
 
   const handleSubmit = useCallback(
     () => {
-      const textTrim = value.trim();
-      if (textTrim) {
-        history.push(`/search${queryString[0]}`);
-      } else {
-        history.push('/');
-      }
+      history.push(getHistoryParams(queryString[0], value));
     },
-    [dispatch, queryString, history, searchBy],
+    [dispatch, queryString, history, value],
   );
 
   return (
