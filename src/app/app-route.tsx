@@ -8,7 +8,7 @@ interface IAppRouteProps { }
 export const AppRoute: FunctionComponent<IAppRouteProps> = () => {
   return (
     <Switch>
-      <Route path={'/details/:id'} component={DetailsPage} />
+      <Route path={'/details/:id/'} component={DetailsPage} />
       <Route path={'/search'} component={HomePage} />
       <Route path={'/'} component={NotFound} />
     </Switch>

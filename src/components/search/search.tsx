@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 
 import { ButtonRadio, ButtonSearch } from '../';
@@ -7,9 +6,7 @@ import { mockSearchButton } from '../../../mock/mock-data';
 
 import './search.scss';
 import { setSearchString, setSearchBy } from '../../services/setting/action';
-import { getSearchString, getQueryParams, getSearchBy } from '../../services/setting/selector';
-import { fetchMoviesList } from '../../services/api/action';
-import { TSortingOrder } from '../../services/setting/utils';
+import { TSortingOrder, TSortingType } from '../../services/setting/utils';
 
 const SEARCH_TITLE = 'FIND YOUR MOVIE';
 const SEARCH_BY = 'SEARCH BY';
@@ -17,15 +14,19 @@ const SEARCH_BY = 'SEARCH BY';
 export interface ISearchProps {
   dispatch: Function;
   sortOrder: TSortingOrder;
+  value: string;
+  queryString: string[];
+  searchBy: TSortingType;
 }
 
 export const Search: FunctionComponent<ISearchProps> = ({ 
   dispatch,
   sortOrder,
+  value,
+  queryString,
+  searchBy,
+
 }) => {
-  const value = useSelector(getSearchString);
-  const queryString = useSelector(getQueryParams);
-  const searchBy = useSelector(getSearchBy);
   const history = useHistory();
 
   const handleChange = useCallback(

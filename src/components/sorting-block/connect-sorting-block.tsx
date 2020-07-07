@@ -6,7 +6,7 @@ import { SortingBlock, ISortingBlockProps } from './sorting-block';
 import { getSortOrder, getSortBy } from '../../services/setting/selector';
 
 // TODO: как описывать ownProps в TS?
-function mapDispatchToProps(dispatch: Dispatch, ownProps: any): ISortingBlockProps {
+function mapDispatchToProps(dispatch: Dispatch, ownProps: any): Partial<ISortingBlockProps> {
   return {
     ...ownProps,
     onclickRadioButton: (params: any = '') => {
@@ -15,10 +15,12 @@ function mapDispatchToProps(dispatch: Dispatch, ownProps: any): ISortingBlockPro
   };
 }
 
-const mapStateToProps = (state: any, ownProps: any) => ({
-  ...ownProps,
-  sortOrder: getSortOrder(state),
-  sortBy: getSortBy(state),
-});
+function mapStateToProps(state: any, ownProps: any) {
+  return {
+    ...ownProps,
+    sortOrder: getSortOrder(state),
+    sortBy: getSortBy(state),
+  }
+};
 
 export const ConnectSortingBlock = connect(mapStateToProps, mapDispatchToProps)(SortingBlock);

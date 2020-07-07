@@ -1,21 +1,19 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
 
-import { getQueryParams } from '../../../../services/setting/selector';
-
-interface IPosterWrapperProps {
+export interface IPosterWrapperProps {
   id: number;
   genres: string[];
+  queryString: string;
 }
 
 export const PosterWrapper: FunctionComponent<IPosterWrapperProps> = ({
+  queryString,
   genres,
   id = '',
   children,
 }) => {
   const history = useHistory();
-  const queryString = useSelector(getQueryParams);
   const handleClick = useCallback(() => {
     const currentGenres = genres.join(',');
     if (id) {
