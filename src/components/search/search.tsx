@@ -1,5 +1,6 @@
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react';
 import { useHistory } from 'react-router';
+import { isUndefined } from 'lodash';
 
 import { ButtonRadio, ButtonSearch } from '../';
 import { mockSearchButton } from '../../../mock/mock-data';
@@ -28,6 +29,7 @@ export const Search: FunctionComponent<ISearchProps> = ({
   searchBy,
 
 }) => {
+  const inputRef = useRef<any>(null);
   const history = useHistory();
 
   const handleChange = useCallback(
@@ -54,6 +56,10 @@ export const Search: FunctionComponent<ISearchProps> = ({
     [dispatch, queryString, history, value],
   );
 
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [inputRef]);
+
   return (
     <div className={'search'}>
       <div className={'search_header'}>
@@ -69,6 +75,7 @@ export const Search: FunctionComponent<ISearchProps> = ({
           type={'search'}
           onChange={handleChange}
           value={value}
+          ref={inputRef}
         />
         <ButtonSearch onPress={handleSubmit} />
       </div>
