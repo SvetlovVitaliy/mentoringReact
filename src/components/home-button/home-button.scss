@@ -1,0 +1,13 @@
+$text-color: #F65261;
+
+.home-button {
+  display: inline-block;
+  font-size: 20px;
+  letter-spacing: normal;
+  color: $text-color;
+  text-decoration: none;
+}
+
+.home-button:active {
+  opacity: 70%;
+}

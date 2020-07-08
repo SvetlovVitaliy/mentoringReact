@@ -1,0 +1,102 @@
+$url: "https://wallpapermemory.com/uploads/647/hong-kong-background-dual-monitor-3840x1200-486903.jpg";
+
+.description-header {
+  display: flex;
+  flex: 1;
+  min-height: 100px;
+  background-color: black;
+  padding: 81px 60px 71px;
+  position: relative;
+
+  &_link {
+    position: absolute;
+    left: 60px;
+    top: 20px;
+  }
+
+  &_content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+  }
+
+  &_image {
+    height: 394px;
+    width: 280px;
+    padding-right: 60px;
+  }
+
+  &_description {
+    margin-top: 29px;
+
+    &__title-rating {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 10px;
+    }
+
+    &__title {
+      max-width: 500px;
+      margin-right: 16px;
+      font-size: 52px;
+      letter-spacing: normal;
+      opacity: 80%;
+      color: #ffffff;
+    }
+
+    &__rating {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ffffff;
+      border-radius: 35px;
+      opacity: 80%;
+      width: 69px;
+      height: 69px;
+      color: #a1e66f;
+      font-size: 21.6px;
+      letter-spacing: normal;
+    }
+
+    &__nomination {
+      font-size: 16px;
+      letter-spacing: normal;
+      color: #ffffff;
+      opacity: 70%;
+      margin-bottom: 28px;
+    }
+
+    &__year-time {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 23px;
+      font-size: 26px;
+      letter-spacing: normal;
+      color: #f65261;
+    }
+
+    &__year {
+      margin-right: 23px;
+    }
+
+    &__description {
+      font-size: 17px;
+      color: #ffffff;
+      letter-spacing: normal;
+      opacity: 80%;
+    }
+  }
+}
+
+.sub-header {
+  display: flex;
+  flex: 1;
+  height: 70px;
+  background-color: #888888;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 118px;
+  color: white;
+  font-size: 16px;
+  letter-spacing: normal;
+}

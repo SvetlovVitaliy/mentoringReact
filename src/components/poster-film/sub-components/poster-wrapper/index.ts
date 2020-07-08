@@ -1,0 +1,1 @@
+export { ConnectPosterWrapper as PosterWrapper } from './connect-poster-wrapper';
