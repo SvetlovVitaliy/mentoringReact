@@ -29,7 +29,7 @@ export const Search: FunctionComponent<ISearchProps> = ({
   searchBy,
 
 }) => {
-  const inputRef = useRef<any>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const history = useHistory();
 
   const handleChange = useCallback(
@@ -57,7 +57,9 @@ export const Search: FunctionComponent<ISearchProps> = ({
   );
 
   useEffect(() => {
-    inputRef.current.focus();
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
   }, [inputRef]);
 
   return (
