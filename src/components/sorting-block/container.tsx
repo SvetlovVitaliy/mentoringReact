@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setSortBy } from '../../services/setting/action';
 import { ISortingBlockProps } from './sorting-block-view';
 import { getSortOrder, getSortBy } from '../../services/setting/selector';
+import { setSortOrder } from '../../services/setting/action';
 
 // TODO: как описывать ownProps в TS?
 function mapDispatchToProps(dispatch: Dispatch, ownProps: any): Partial<ISortingBlockProps> {
@@ -11,6 +12,9 @@ function mapDispatchToProps(dispatch: Dispatch, ownProps: any): Partial<ISorting
     ...ownProps,
     onclickRadioButton: (params: any = '') => {
       dispatch(setSortBy(params));
+    },
+    changeSorting: (params: any = '') => {
+      dispatch(setSortOrder(params));
     },
   };
 }

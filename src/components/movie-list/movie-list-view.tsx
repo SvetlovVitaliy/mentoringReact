@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router';
 import { get, map } from 'lodash';
 
 import { fetchMoviesList, fetchMovieBy } from '../../services/api/action';
-import { Poster } from '..';
+import { Poster } from '../poster-film';
 
 import './movie-list.scss';
 import { IMovie } from 'src/services/api/utils';

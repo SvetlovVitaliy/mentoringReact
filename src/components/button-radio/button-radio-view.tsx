@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useState } from 'react';
 import { map } from 'lodash';
 
 import { TSortingOrder } from '../../services/setting/utils';
-import { Button } from '../';
+import { Button } from '../button';
 import { IButtonItem } from './types';
 import { handleClickButtonRadio } from './utils';
 import { getButtonClassName } from '../button/utils';
@@ -13,7 +13,7 @@ export interface IButtonRadioProps {
   activeTab: string;
   buttons: IButtonItem[];
   onPress: Function;
-  changeSorting?: Function;
+  changeSorting: Function;
   sortOrder: TSortingOrder;
 }
 
@@ -33,7 +33,7 @@ export const ButtonRadioView: FunctionComponent<IButtonRadioProps> = ({
       handleClickButtonRadio(param, activeTab, sortOrder, onPress, changeSorting);
       setActiveTitle(param);
     },
-    [onPress, activeTab, sortOrder],
+    [onPress, activeTab, sortOrder, changeSorting],
   );
 
   const renderButtons = useCallback(

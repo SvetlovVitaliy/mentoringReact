@@ -2,7 +2,8 @@ import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router';
 import { isUndefined } from 'lodash';
 
-import { ButtonRadio, ButtonSearch } from '..';
+import { ButtonRadioView } from '../button-radio';
+import { ButtonSearch } from '../button-search';
 import { mockSearchButton } from '../../../mock/mock-data';
 
 import './search.scss';
@@ -15,6 +16,7 @@ const SEARCH_BY = 'SEARCH BY';
 
 export interface ISearchProps {
   dispatch: Function;
+  changeSorting: Function;
   sortOrder: TSortingOrder;
   value: string;
   queryString: string[];
@@ -27,7 +29,7 @@ export const SearchView: FunctionComponent<ISearchProps> = ({
   value,
   queryString,
   searchBy,
-
+  changeSorting,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const history = useHistory();
@@ -81,7 +83,13 @@ export const SearchView: FunctionComponent<ISearchProps> = ({
       </div>
       <div className={'search_radio'}>
         <p className={'search_radio__text'}>{SEARCH_BY}</p>
-        <ButtonRadio buttons={mockSearchButton} onPress={handleRadioButton} activeTab={searchBy} sortOrder={sortOrder} />
+        <ButtonRadioView
+          buttons={mockSearchButton}
+          onPress={handleRadioButton}
+          activeTab={searchBy}
+          sortOrder={sortOrder}
+          changeSorting={changeSorting}
+        />
       </div>
     </div>
   );

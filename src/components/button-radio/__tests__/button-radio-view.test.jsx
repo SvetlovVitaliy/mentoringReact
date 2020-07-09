@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { ButtonRadioView } from '../button-radio-view';
+import { TSortType } from '../../sorting-block/types';
 
 describe('button-radio', () => {
   const mockSortButton = [

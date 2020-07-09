@@ -8,17 +8,21 @@ import {
   getQueryParams,
   getSearchBy,
 } from '../../services/setting/selector';
+import { setSortOrder } from '../../services/setting/action';
 
 const mapDispatchToProps = (dispatch: Dispatch, ownProps: any): Partial<ISearchProps> => {
   return {
     ...ownProps,
     dispatch: (action: any, params: string) => {
       dispatch(action(params));
-    }
+    },
+    changeSorting: (params: any = '') => {
+      dispatch(setSortOrder(params));
+    },
   }
 }
 
-const mapStateToProps = (state: any, ownProps: any): ISearchProps  => {
+const mapStateToProps = (state: any, ownProps: any): ISearchProps => {
   return {
     ...ownProps,
     sortOrder: getSortOrder(state),
