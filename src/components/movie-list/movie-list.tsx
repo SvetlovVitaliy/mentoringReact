@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import { RouteComponentProps } from 'react-router';
 import { get, map } from 'lodash';
 
@@ -30,9 +31,20 @@ export const MovieList: FunctionComponent<IMovieListProps> = ({ fetchMovies, loc
 
   return (
     <div className={'movie-list'}>
-      {!!queryParams && map(movies, (item, index) => <Poster key={index} movie={item} />)}
+      {!!queryParams && map(movies, (item, index) => {
+        return (
+          <CSSTransition
+            in={true}
+            unmountOnExit
+            timeout={{ appear: 0, enter: 0, exit: 300 }}
+            classNames='roll'
+            appear
+          >
+            <Poster key={index} movie={item} />
+          </CSSTransition>);
+      })}
       {(movies.length === 0 || !queryParams) && (
-        <div className={'movie-list__wrapper'}>
+        <div className={'movie-list__wrapper'} key={'not found'}>
           <div className={'movie-list__not-found'}>{notFound}</div>
         </div>
       )}

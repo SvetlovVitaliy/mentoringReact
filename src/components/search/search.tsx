@@ -35,9 +35,7 @@ export const Search: FunctionComponent<ISearchProps> = ({
   const handleChange = useCallback(
     ({ currentTarget: { value } }) => {
       const textTrim = value.trim();
-      if (textTrim) {
-        dispatch(setSearchString, textTrim);
-      }
+      dispatch(setSearchString, textTrim);
     },
     [dispatch],
   );
