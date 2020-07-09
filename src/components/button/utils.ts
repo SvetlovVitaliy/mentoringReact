@@ -3,19 +3,23 @@ export function getButtonClassName(
   isFirst: boolean = false,
   isLast: boolean = false
 ): string {
-  const defaultClassName = 'button';
-  let returnClassName = defaultClassName;
+  let returnClassName = '';
 
   if (isActive) {
-    returnClassName = `${returnClassName} ${defaultClassName}__active`;
+    const classNameActive = 'button__active';
+    returnClassName = classNameActive;
   }
 
   if (isFirst) {
-    returnClassName = `${returnClassName} ${defaultClassName}__first`
+    const classNameFirst = 'button__first';
+    const resultClassName = returnClassName ? `${returnClassName} ${classNameFirst}` : classNameFirst;
+    returnClassName = resultClassName;
   }
 
   if (isLast) {
-    returnClassName = `${returnClassName} ${defaultClassName}__last`
+    const classNameLast = 'button__last';
+    const resultClassName = returnClassName ? `${returnClassName} ${classNameLast}` : classNameLast;
+    returnClassName = resultClassName;
   }
 
   return returnClassName;

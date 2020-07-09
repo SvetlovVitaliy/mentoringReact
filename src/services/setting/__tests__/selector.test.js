@@ -16,7 +16,7 @@ import {
   TSortingOrder,
 } from '../utils';
 
-describe('settingReducer request', () => {
+describe('settingSelector request', () => {
   const searchParams = {
     searchString: '123',
     sortOrder: TSortingOrder.ASK,
@@ -27,7 +27,7 @@ describe('settingReducer request', () => {
 
   describe('getSearchParams', () => {
     it('should return all search params', () => {
-      expect(getSearchParams(deepFreeze({ settingData: { ...initialState, searchParams } }))).toEqual(searchParams);
+      expect(getSearchParams(deepFreeze({ settingReducer: { ...initialState, searchParams } }))).toEqual(searchParams);
     });
   });
 

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { DescriptionHeader, IDescriptionHeaderProps } from './description-header';
+import { IDescriptionHeaderProps } from './description-header-view';
 import { getQueryParams } from '../../services/setting/selector';
 import { getMovieDetails } from '../../services/api/selector';
 
@@ -22,4 +22,4 @@ function mapStateToProps(state: any, ownProps: any): IDescriptionHeaderProps {
   };
 }
 
-export const ConnectDescriptionHeader = connect(mapStateToProps, mapDispatchToProps)(DescriptionHeader);
+export const container = connect(mapStateToProps, mapDispatchToProps);

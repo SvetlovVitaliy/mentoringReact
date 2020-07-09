@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useCallback } from 'react';
 
-import { ButtonRadio } from '../';
+import { ButtonRadio } from '..';
 import { mockSortButton } from '../../../mock/mock-data';
 import { TSortingOrder, TSortingType } from '../../services/setting/utils';
 
@@ -12,7 +12,7 @@ export interface ISortingBlockProps {
   sortBy: TSortingType;
 }
 
-export const SortingBlock: FunctionComponent<ISortingBlockProps> = ({
+export const SortingBlockView: FunctionComponent<ISortingBlockProps> = ({
   onclickRadioButton,
   sortOrder,
   sortBy,

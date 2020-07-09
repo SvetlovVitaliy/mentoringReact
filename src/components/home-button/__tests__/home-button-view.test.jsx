@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { HomeButton } from '../';
+import { HomeButtonView } from '../home-button-view';
 
 describe('home-button', () => {
   it('Snapshot button', () => {
-    const button = shallow(<HomeButton />);
+    const button = shallow(<HomeButtonView />);
 
     expect(button).toMatchSnapshot();
   })

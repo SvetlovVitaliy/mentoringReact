@@ -1,1 +1,1 @@
-export { ConnectPosterWrapper as PosterWrapper } from './connect-poster-wrapper';
+export { PosterWrapper } from './poster-wrapper';

@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { setSortBy } from '../../services/setting/action';
-import { SortingBlock, ISortingBlockProps } from './sorting-block';
+import { ISortingBlockProps } from './sorting-block-view';
 import { getSortOrder, getSortBy } from '../../services/setting/selector';
 
 // TODO: как описывать ownProps в TS?
@@ -23,4 +23,4 @@ function mapStateToProps(state: any, ownProps: any) {
   }
 };
 
-export const ConnectSortingBlock = connect(mapStateToProps, mapDispatchToProps)(SortingBlock);
+export const container = connect(mapStateToProps, mapDispatchToProps);

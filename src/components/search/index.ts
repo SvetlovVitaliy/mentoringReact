@@ -1,1 +1,4 @@
-export { ConnectSearch as Search } from './connect-search';
+import { container } from './container';
+import { SearchView } from './search-view';
+
+export const Search = container(SearchView);

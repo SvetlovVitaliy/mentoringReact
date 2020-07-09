@@ -12,7 +12,7 @@ interface IHomeButtonProps {
   value: string;
 }
 
-export const HomeButton: FunctionComponent<IHomeButtonProps> = ({
+export const HomeButtonView: FunctionComponent<IHomeButtonProps> = ({
   queryString,
   value,
 }) => {

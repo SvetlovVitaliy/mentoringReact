@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { Poster } from '../';
+import { SearchView } from '../search-view';
 
-describe('poster', () => {
+describe('search', () => {
   it('Snapshot button', () => {
-    const button = shallow(<Poster />);
+    const button = shallow(<SearchView />);
 
     expect(button).toMatchSnapshot();
   })

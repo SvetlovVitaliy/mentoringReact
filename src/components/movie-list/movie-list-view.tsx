@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router';
 import { get, map } from 'lodash';
 
 import { fetchMoviesList, fetchMovieBy } from '../../services/api/action';
-import { Poster } from '../';
+import { Poster } from '..';
 
 import './movie-list.scss';
 import { IMovie } from 'src/services/api/utils';
@@ -16,7 +16,7 @@ export interface IMovieListProps extends RouteComponentProps {
   movies: IMovie[];
 }
 
-export const MovieList: FunctionComponent<IMovieListProps> = ({ fetchMovies, location, match, movies = [] }) => {
+export const MovieListView: FunctionComponent<IMovieListProps> = ({ fetchMovies, location, match, movies = [] }) => {
   const queryParams = get(location, 'search', '');
   const id = get(match, 'params.id', '');
 

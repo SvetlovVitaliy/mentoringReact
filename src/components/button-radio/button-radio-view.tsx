@@ -5,6 +5,7 @@ import { TSortingOrder } from '../../services/setting/utils';
 import { Button } from '../';
 import { IButtonItem } from './types';
 import { handleClickButtonRadio } from './utils';
+import { getButtonClassName } from '../button/utils';
 
 import './button-radio.scss';
 
@@ -16,7 +17,7 @@ export interface IButtonRadioProps {
   sortOrder: TSortingOrder;
 }
 
-export const ButtonRadio: FunctionComponent<IButtonRadioProps> = ({
+export const ButtonRadioView: FunctionComponent<IButtonRadioProps> = ({
   activeTab = '',
   onPress,
   buttons = [],
@@ -25,6 +26,7 @@ export const ButtonRadio: FunctionComponent<IButtonRadioProps> = ({
 }) => {
   const [activeTitle, setActiveTitle] = useState<string>(activeTab);
   const hasButtons = buttons.length > 0;
+  const buttonsLength = buttons.length - 1;
 
   const handlePress = useCallback(
     (param: any) => {
@@ -38,17 +40,18 @@ export const ButtonRadio: FunctionComponent<IButtonRadioProps> = ({
     () => {
       return (
         hasButtons &&
-        map(buttons, ({ id, title }: IButtonItem, index: number) => (
-          <Button
-            title={title}
-            onPress={handlePress}
-            isActive={activeTitle === id}
-            isFirst={index === 0}
-            isLast={index === (buttons.length - 1)}
-            key={id}
-            param={id}
-          />
-        ))
+        map(buttons, ({ id, title }: IButtonItem, index: number) => {
+          const className = getButtonClassName(activeTitle === id, index === 0, index === buttonsLength);
+          return (
+            <Button
+              title={title}
+              onPress={handlePress}
+              className={className}
+              key={id}
+              param={id}
+            />
+          );
+        })
       );
     },
     [buttons, hasButtons, handlePress, activeTitle],

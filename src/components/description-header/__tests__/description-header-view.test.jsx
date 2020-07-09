@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { DescriptionHeader } from '../';
+import { DescriptionHeaderView } from '../description-header-view';
 
 describe('description-header', () => {
   it('Snapshot button', () => {
-    const button = shallow(<DescriptionHeader />);
+    const button = shallow(<DescriptionHeaderView />);
 
     expect(button).toMatchSnapshot();
   })

@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router';
 import { isUndefined } from 'lodash';
 
-import { ButtonRadio, ButtonSearch } from '../';
+import { ButtonRadio, ButtonSearch } from '..';
 import { mockSearchButton } from '../../../mock/mock-data';
 
 import './search.scss';
@@ -21,7 +21,7 @@ export interface ISearchProps {
   searchBy: TSortingType;
 }
 
-export const Search: FunctionComponent<ISearchProps> = ({
+export const SearchView: FunctionComponent<ISearchProps> = ({
   dispatch,
   sortOrder,
   value,

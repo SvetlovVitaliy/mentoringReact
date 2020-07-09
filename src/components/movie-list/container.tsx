@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { MovieList, IMovieListProps } from './movie-list';
+import { IMovieListProps } from './movie-list-view';
 import { getMovieList } from '../../services/api/selector';
 
 function mapDispatchToProps(dispatch: Dispatch, ownProps: any): IMovieListProps {
@@ -19,4 +19,4 @@ function mapStateToProps(state: any) {
   };
 }
 
-export const ConnectMovieList = connect(mapStateToProps, mapDispatchToProps)(MovieList);
+export const container = connect(mapStateToProps, mapDispatchToProps);

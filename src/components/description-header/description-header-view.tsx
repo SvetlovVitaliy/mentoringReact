@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { get } from 'lodash';
 
-import { HomeButton } from '../';
+import { HomeButton } from '..';
 import { fetchMoviesList, fetchMovieBy } from '../../services/api/action';
 import { IMovie } from 'src/services/api/utils';
 
@@ -16,7 +16,7 @@ export interface IDescriptionHeaderProps extends RouteComponentProps {
   movie: IMovie;
 }
 
-export const DescriptionHeader: FunctionComponent<IDescriptionHeaderProps> = ({
+export const DescriptionHeaderView: FunctionComponent<IDescriptionHeaderProps> = ({
   dispatch,
   queryString,
   movie: {

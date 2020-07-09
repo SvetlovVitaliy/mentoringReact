@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
-import { Search, ISearchProps } from './search';
+import { ISearchProps } from './search-view';
 import {
   getSortOrder,
   getSearchString,
@@ -28,4 +28,4 @@ const mapStateToProps = (state: any, ownProps: any): ISearchProps  => {
   };
 }
 
-export const ConnectSearch = connect(mapStateToProps, mapDispatchToProps)(Search);
+export const container = connect(mapStateToProps, mapDispatchToProps);
