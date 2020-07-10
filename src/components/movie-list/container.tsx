@@ -3,6 +3,7 @@ import { Dispatch } from 'redux';
 
 import { IMovieListProps } from './movie-list-view';
 import { getMovieList } from '../../services/api/selector';
+import { getQueryParams } from '../../services/setting/selector';
 
 function mapDispatchToProps(dispatch: Dispatch, ownProps: any): IMovieListProps {
   return {
@@ -13,9 +14,11 @@ function mapDispatchToProps(dispatch: Dispatch, ownProps: any): IMovieListProps 
   }
 }
 
-function mapStateToProps(state: any) {
+function mapStateToProps(state: any, ownProps: any) {
   return {
+    ...ownProps,
     movies: getMovieList(state),
+    queryString: getQueryParams(state),
   };
 }
 

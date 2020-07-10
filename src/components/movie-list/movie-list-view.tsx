@@ -14,9 +14,16 @@ const notFound = 'NOT FOUND';
 export interface IMovieListProps extends RouteComponentProps {
   fetchMovies: Function;
   movies: IMovie[];
+  queryString: string[];
 }
 
-export const MovieListView: FunctionComponent<IMovieListProps> = ({ fetchMovies, location, match, movies = [] }) => {
+export const MovieListView: FunctionComponent<IMovieListProps> = ({
+  fetchMovies,
+  location,
+  match,
+  movies = [],
+  queryString,
+}) => {
   const queryParams = get(location, 'search', '');
   const id = get(match, 'params.id', '');
 
@@ -40,7 +47,7 @@ export const MovieListView: FunctionComponent<IMovieListProps> = ({ fetchMovies,
             classNames='roll'
             appear
           >
-            <Poster key={index} movie={item} />
+            <Poster key={index} movie={item} queryString={queryString} />
           </CSSTransition>);
       })}
       {(movies.length === 0 || !queryParams) && (

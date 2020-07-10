@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { PosterView } from '../poster-view';
+import { Poster } from '../poster';
 
 describe('poster', () => {
   describe('snapshot', () => {
@@ -12,9 +12,10 @@ describe('poster', () => {
       release_date: '2018',
       id: 1,
     };
+    const mockQueryParams = ['123', '456'];
 
     it('Snapshot button', () => {
-      const button = shallow(<PosterView movie={mockMovie} />);
+      const button = shallow(<Poster movie={mockMovie} queryString={mockQueryParams} />);
 
       expect(button).toMatchSnapshot();
     });

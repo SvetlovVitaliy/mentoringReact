@@ -10,7 +10,7 @@ interface IPosterProps {
   queryString: string[];
 }
 
-export const PosterView: FunctionComponent<IPosterProps> = ({
+export const Poster: FunctionComponent<IPosterProps> = ({
   movie: { poster_path, genres, title, release_date, id },
   queryString,
 }) => {
