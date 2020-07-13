@@ -16,7 +16,7 @@ describe('button', () => {
 
   describe('simulate click', () => {
     it('button click', () => {
-      button.find('.button').simulate('click');
+      button.find('#onPress').simulate('click');
     });
   });
 });

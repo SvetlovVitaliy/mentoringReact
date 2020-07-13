@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useCallback, useState, useMemo } from 'react';
+import createClassNames from 'classnames';
 import { map } from 'lodash';
 
 import { TSortingOrder } from '../../services/setting/utils';
 import { Button } from '../button';
 import { IButtonItem } from './types';
 import { handleClickButtonRadio } from './utils';
-import createClassNames from 'classnames';
 
 import './button-radio.scss';
 

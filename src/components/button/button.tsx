@@ -24,7 +24,11 @@ export const Button: FunctionComponent<IButtonProps> = ({
   )
 
   return (
-    <div className={createClassNames('button', { [className]: !!className })} onClick={handlePress}>
+    <div
+      className={createClassNames('button', { [className]: !!className })}
+      onClick={handlePress}
+      id={param}
+    >
       <p className={'button_title'}>{title}</p>
     </div>
   );

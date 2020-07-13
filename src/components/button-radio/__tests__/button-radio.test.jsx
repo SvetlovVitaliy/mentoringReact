@@ -15,11 +15,12 @@ describe('button-radio', () => {
       title: TSortType.RATING,
     },
   ];
+  const onPress = jest.fn();
+  const buttons = shallow(<ButtonRadio buttons={mockSortButton} onPress={onPress} />);
 
-  it('Snapshot button', () => {
-    const onPress = jest.fn();
-    const button = shallow(<ButtonRadio buttons={mockSortButton} onPress={onPress} />);
-
-    expect(button).toMatchSnapshot();
-  })
-})
+  describe('snapshot', () => {
+    it('Snapshot button', () => {
+      expect(buttons).toMatchSnapshot();
+    });
+  });
+});
