@@ -1,5 +1,5 @@
 export { Button } from './button';
-export { ButtonRadioView } from './button-radio';
+export { ButtonRadio } from './button-radio';
 export { ButtonSearch } from './button-search';
 export { Poster } from './poster-film';
 export { Header } from './header';

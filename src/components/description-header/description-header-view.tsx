@@ -4,12 +4,11 @@ import { get } from 'lodash';
 
 import { HomeButton } from '../home-button';
 import { fetchMoviesList, fetchMovieBy } from '../../services/api/action';
-import { IMovie } from 'src/services/api/utils';
-import { Image } from '../image-components';
+import { IMovie } from '../../services/api/utils';
+import { SUB_TITLE } from './utils';
+import { ContentWrapper } from './content-wrapper';
 
 import './description-header.scss';
-
-const SUB_TITLE = 'Films by Drama genre';
 
 export interface IDescriptionHeaderProps extends RouteComponentProps {
   dispatch: Function;
@@ -20,19 +19,9 @@ export interface IDescriptionHeaderProps extends RouteComponentProps {
 export const DescriptionHeaderView: FunctionComponent<IDescriptionHeaderProps> = ({
   dispatch,
   queryString,
-  movie: {
-    poster_path,
-    runtime,
-    release_date,
-    title,
-    overview,
-    vote_average,
-    tagline
-  },
+  movie,
   match,
 }) => {
-  const currentDate = new Date(release_date);
-  const formatRuntime = `${runtime} min`;
   const currentId = get(match, 'params.id', '');
 
   useEffect(() => {
@@ -46,26 +35,10 @@ export const DescriptionHeaderView: FunctionComponent<IDescriptionHeaderProps> =
         <div className={'description-header_link'}>
           <HomeButton />
         </div>
-        <div className={'description-header_content'}>
-          <Image classNames={'description-header_image'} url={poster_path} />
-          <div className={'description-header_description'}>
-            <div className={'description-header_description__title-rating'}>
-              <div className={'description-header_description__title'}>{title}</div>
-              <div className={'description-header_description__rating'}>{vote_average}</div>
-            </div>
-            <div className={'description-header_description__nomination'}>{tagline}</div>
-            <div className={'description-header_description__year-time'}>
-              <div className={'description-header_description__year'}>{currentDate.getFullYear()}</div>
-              <div className={'description-header_description__time'}>{formatRuntime}</div>
-            </div>
-            <div className={'description-header_description__description'}>{overview}</div>
-          </div>
-        </div>
+        <ContentWrapper movie={movie} />
       </div>
       <div className={'sub-header'}>
-        <b>
-          {SUB_TITLE}
-        </b>
+        <b>{SUB_TITLE}</b>
       </div>
     </>
   );

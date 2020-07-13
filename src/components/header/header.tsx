@@ -5,9 +5,7 @@ import { HomeButton, Search } from '../';
 
 import './header.scss';
 
-interface IHeaderProps { }
-
-export const Header: FunctionComponent<IHeaderProps> = () => {
+export const Header: FunctionComponent<{}> = () => {
   return (
     <HeaderWrapper>
       <HomeButton />
