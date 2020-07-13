@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, { FunctionComponent, useCallback, useState, useMemo } from 'react';
 import { map } from 'lodash';
 
 import { TSortingOrder } from '../../services/setting/utils';
 import { Button } from '../button';
 import { IButtonItem } from './types';
 import { handleClickButtonRadio } from './utils';
-import { getButtonClassName } from '../button/utils';
+import createClassNames from 'classnames';
 
 import './button-radio.scss';
 
@@ -28,6 +28,10 @@ export const ButtonRadioView: FunctionComponent<IButtonRadioProps> = ({
   const hasButtons = buttons.length > 0;
   const buttonsLength = buttons.length - 1;
 
+  const classNames = useCallback(({ id, index }: { id: string, index: number }) => {
+    return createClassNames({ 'button__active': activeTitle === id, 'button__first': index === 0, 'button__last': buttonsLength === index });
+  }, [activeTitle, buttonsLength]);
+
   const handlePress = useCallback(
     (param: any) => {
       handleClickButtonRadio(param, activeTab, sortOrder, onPress, changeSorting);
@@ -36,25 +40,22 @@ export const ButtonRadioView: FunctionComponent<IButtonRadioProps> = ({
     [onPress, activeTab, sortOrder, changeSorting],
   );
 
+
+
   const renderButtons = useCallback(
-    () => {
-      return (
-        hasButtons &&
-        map(buttons, ({ id, title }: IButtonItem, index: number) => {
-          const className = getButtonClassName(activeTitle === id, index === 0, index === buttonsLength);
-          return (
-            <Button
-              title={title}
-              onPress={handlePress}
-              className={className}
-              key={id}
-              param={id}
-            />
-          );
-        })
-      );
-    },
-    [buttons, hasButtons, handlePress, activeTitle],
+    () => (
+      hasButtons &&
+      map(buttons, ({ id, title }: IButtonItem, index: number) => (
+        <Button
+          title={title}
+          onPress={handlePress}
+          className={classNames({ id, index })}
+          key={id}
+          param={id}
+        />
+      ))
+    ),
+    [buttons, hasButtons, handlePress, classNames],
   )
 
   return (
