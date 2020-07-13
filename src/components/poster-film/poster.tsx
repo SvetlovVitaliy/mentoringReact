@@ -1,9 +1,11 @@
 import React, { FunctionComponent } from 'react';
 
-import { FilmInfo, PosterImage, PosterWrapper } from './sub-components';
+import { Image } from '../image-components';
+import { FilmInfo } from './film-info';
+import { PosterWrapper } from './poster-wrapper';
+import { IMovie } from '../../services/api/utils';
 
 import './poster-film.scss';
-import { IMovie } from '../../services/api/utils';
 
 interface IPosterProps {
   movie: IMovie;
@@ -16,7 +18,7 @@ export const Poster: FunctionComponent<IPosterProps> = ({
 }) => {
   return (
     <PosterWrapper id={id} genres={genres} queryString={queryString}>
-      <PosterImage url={poster_path} />
+      <Image url={poster_path} classNames={'poster_image'} />
       <FilmInfo year={release_date} gengre={genres[0]} title={title} />
     </PosterWrapper>
   );

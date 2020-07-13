@@ -5,6 +5,7 @@ import { get } from 'lodash';
 import { HomeButton } from '../home-button';
 import { fetchMoviesList, fetchMovieBy } from '../../services/api/action';
 import { IMovie } from 'src/services/api/utils';
+import { Image } from '../image-components';
 
 import './description-header.scss';
 
@@ -46,7 +47,7 @@ export const DescriptionHeaderView: FunctionComponent<IDescriptionHeaderProps> =
           <HomeButton />
         </div>
         <div className={'description-header_content'}>
-          <img className={'description-header_image'} src={poster_path} />
+          <Image classNames={'description-header_image'} url={poster_path} />
           <div className={'description-header_description'}>
             <div className={'description-header_description__title-rating'}>
               <div className={'description-header_description__title'}>{title}</div>

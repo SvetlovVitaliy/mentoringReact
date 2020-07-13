@@ -17,7 +17,7 @@ export interface IButtonRadioProps {
   sortOrder: TSortingOrder;
 }
 
-export const ButtonRadioView: FunctionComponent<IButtonRadioProps> = ({
+export const ButtonRadio: FunctionComponent<IButtonRadioProps> = ({
   activeTab = '',
   onPress,
   buttons = [],

@@ -4,12 +4,19 @@ import { shallow } from 'enzyme';
 import { Button } from '../';
 
 describe('button', () => {
-  it('Snapshot button', () => {
-    const onPress = jest.fn();
-    const title = 'onPress';
-    const button = shallow(<Button title={title} onPress={onPress} />);
-    button.find('.button').simulate('click');
+  const onPress = jest.fn();
+  const title = 'onPress';
+  const button = shallow(<Button title={title} onPress={onPress} />);
 
-    expect(button).toMatchSnapshot();
-  })
-})
+  describe('snapshot', () => {
+    it('Snapshot button', () => {
+      expect(button).toMatchSnapshot();
+    });
+  });
+
+  describe('simulate click', () => {
+    it('button click', () => {
+      button.find('.button').simulate('click');
+    });
+  });
+});

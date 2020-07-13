@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useCallback } from 'react';
 
-import { ButtonRadioView } from '../button-radio';
+import { ButtonRadio } from '../button-radio';
 import { mockSortButton } from '../../../mock/mock-data';
 import { TSortingOrder, TSortingType } from '../../services/setting/utils';
 
@@ -28,7 +28,7 @@ export const SortingBlockView: FunctionComponent<ISortingBlockProps> = ({
       <div className={'sorting-block_text'}>
         {'SORT BY'}
       </div>
-      <ButtonRadioView
+      <ButtonRadio
         buttons={mockSortButton}
         onPress={handleButton}
         activeTab={sortBy}

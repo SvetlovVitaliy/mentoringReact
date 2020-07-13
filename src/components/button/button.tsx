@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useCallback, useMemo } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
+import createClassNames from 'classnames';
 
 import './button.scss';
 
@@ -15,14 +16,6 @@ export const Button: FunctionComponent<IButtonProps> = ({
   onPress,
   className = '',
 }) => {
-  const buttonClassName = useMemo(
-    () => {
-      const defaultClassName = 'button';
-      return className ? `${defaultClassName} ${className}` : defaultClassName;
-    },
-    [className],
-  );
-
   const handlePress = useCallback(
     () => {
       onPress(param);
@@ -31,7 +24,7 @@ export const Button: FunctionComponent<IButtonProps> = ({
   )
 
   return (
-    <div className={buttonClassName} onClick={handlePress}>
+    <div className={createClassNames('button', { [className]: !!className })} onClick={handlePress}>
       <p className={'button_title'}>{title}</p>
     </div>
   );

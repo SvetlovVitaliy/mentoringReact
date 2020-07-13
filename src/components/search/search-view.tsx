@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react'
 import { useHistory } from 'react-router';
 import { isUndefined } from 'lodash';
 
-import { ButtonRadioView } from '../button-radio';
+import { ButtonRadio } from '../button-radio';
 import { ButtonSearch } from '../button-search';
 import { mockSearchButton } from '../../../mock/mock-data';
 
@@ -83,7 +83,7 @@ export const SearchView: FunctionComponent<ISearchProps> = ({
       </div>
       <div className={'search_radio'}>
         <p className={'search_radio__text'}>{SEARCH_BY}</p>
-        <ButtonRadioView
+        <ButtonRadio
           buttons={mockSearchButton}
           onPress={handleRadioButton}
           activeTab={searchBy}

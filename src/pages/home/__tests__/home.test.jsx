@@ -1,12 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { HomePage } from '../../';
+import { HomePage } from '../home';
 
 describe('home-page', () => {
-  it('Snapshot button', () => {
-    const button = shallow(<HomePage />);
+  describe('snapshot', () => {
+    it('snapshot', () => {
+      const home = shallow(<HomePage />);
 
-    expect(button).toMatchSnapshot();
-  })
-})
+      expect(home).toMatchSnapshot();
+    });
+  });
+});

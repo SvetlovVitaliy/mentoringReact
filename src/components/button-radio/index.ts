@@ -1,1 +1,1 @@
-export { ButtonRadioView } from './button-radio-view';
+export { ButtonRadio } from './button-radio';

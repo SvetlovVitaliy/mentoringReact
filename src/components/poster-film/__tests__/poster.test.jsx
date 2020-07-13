@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { Poster } from '../poster';
+import { FilmInfo } from '../film-info';
+import { YearFilm } from '../year-film';
 
 describe('poster', () => {
   describe('snapshot', () => {
@@ -14,10 +16,22 @@ describe('poster', () => {
     };
     const mockQueryParams = ['123', '456'];
 
-    it('Snapshot button', () => {
-      const button = shallow(<Poster movie={mockMovie} queryString={mockQueryParams} />);
+    it('poster component', () => {
+      const poster = shallow(<Poster movie={mockMovie} queryString={mockQueryParams} />);
 
-      expect(button).toMatchSnapshot();
+      expect(poster).toMatchSnapshot();
+    });
+
+    it('film info component', () => {
+      const poster = shallow(<FilmInfo title={mockMovie.title} gengre={mockMovie.genres[0]} year={mockMovie.release_date} />);
+
+      expect(poster).toMatchSnapshot();
+    });
+
+    it('year film component', () => {
+      const poster = shallow(<YearFilm year={mockMovie.release_date} />);
+
+      expect(poster).toMatchSnapshot();
     });
   });
 });

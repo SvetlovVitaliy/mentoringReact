@@ -3,9 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import { HomePage, DetailsPage, NotFound, NotFoundPage } from '../pages';
 
-interface IAppRouteProps { }
-
-export const AppRoute: FunctionComponent<IAppRouteProps> = () => {
+export const AppRoute: FunctionComponent<{}> = () => {
   return (
     <Switch>
       <Route path={'/details/:id/'} component={DetailsPage} />

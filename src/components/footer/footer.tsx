@@ -4,9 +4,7 @@ import { HomeButton } from '../';
 
 import './footer.scss';
 
-interface IFooterProps { }
-
-export const Footer: FunctionComponent<IFooterProps> = () => {
+export const Footer: FunctionComponent<{}> = () => {
   return (
     <div className={'footer'}>
       <HomeButton />
