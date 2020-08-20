@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react';
 
+import { SEARCH } from './utils';
 import './button-search.scss';
-
-const SEARCH = 'SEARCH';
 
 interface IButtonSearchProps {
   onPress: () => void;

@@ -8,9 +8,7 @@ import { AppRoute } from './app-route';
 
 import './app.scss';
 
-interface IAppProps { }
-
-export const App: FunctionComponent<IAppProps> = () => {
+export const App: FunctionComponent<{}> = () => {
   return (
     <ErrorBoundary>
       <BrowserRouter>

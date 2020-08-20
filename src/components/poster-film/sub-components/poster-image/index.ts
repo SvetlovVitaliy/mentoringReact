@@ -1,1 +1,0 @@
-export { PosterImage } from './poster-image';

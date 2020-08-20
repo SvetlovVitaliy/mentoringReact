@@ -1,14 +1,26 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { ButtonRadio } from '../';
-import { mockSortButton } from '../../../../mock/mock-data';
+import { ButtonRadio } from '../button-radio';
+import { TSortType } from '../../sorting-block/types';
 
 describe('button-radio', () => {
-  it('Snapshot button', () => {
-    const onPress = jest.fn();
-    const button = shallow(<ButtonRadio buttons={mockSortButton} onPress={onPress} />);
+  const mockSortButton = [
+    {
+      id: 'release_date',
+      title: TSortType.RELEASE_DATE,
+    },
+    {
+      id: 'rating',
+      title: TSortType.RATING,
+    },
+  ];
+  const onPress = jest.fn();
+  const buttons = shallow(<ButtonRadio buttons={mockSortButton} onPress={onPress} />);
 
-    expect(button).toMatchSnapshot();
-  })
-})
+  describe('snapshot', () => {
+    it('Snapshot button', () => {
+      expect(buttons).toMatchSnapshot();
+    });
+  });
+});

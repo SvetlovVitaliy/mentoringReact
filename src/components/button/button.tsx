@@ -1,31 +1,21 @@
-import React, { FunctionComponent, useCallback, useMemo } from 'react';
-
-import { getButtonClassName } from './utils';
+import React, { FunctionComponent, useCallback } from 'react';
+import createClassNames from 'classnames';
 
 import './button.scss';
 
 interface IButtonProps {
   title: string;
   param?: string;
-  isActive?: boolean;
-  isFirst?: boolean;
-  isLast?: boolean;
   onPress: (title: string) => void;
+  className?: string;
 }
 
 export const Button: FunctionComponent<IButtonProps> = ({
   title,
   param = title,
   onPress,
-  isActive = false,
-  isFirst = false,
-  isLast = false,
+  className = '',
 }) => {
-  const buttonClassName = useMemo(
-    () => getButtonClassName(isActive, isFirst, isLast),
-    [isActive, isFirst, isLast],
-  );
-
   const handlePress = useCallback(
     () => {
       onPress(param);
@@ -34,7 +24,11 @@ export const Button: FunctionComponent<IButtonProps> = ({
   )
 
   return (
-    <div className={buttonClassName} onClick={handlePress}>
+    <div
+      className={createClassNames('button', { [className]: !!className })}
+      onClick={handlePress}
+      id={param}
+    >
       <p className={'button_title'}>{title}</p>
     </div>
   );

@@ -1,13 +1,11 @@
 import React, { FunctionComponent } from 'react';
 
-import { HeaderWrapper } from './sub-components';
+import { HeaderWrapper } from './header-wrapper';
 import { HomeButton, Search } from '../';
 
 import './header.scss';
 
-interface IHeaderProps { }
-
-export const Header: FunctionComponent<IHeaderProps> = () => {
+export const Header: FunctionComponent<{}> = () => {
   return (
     <HeaderWrapper>
       <HomeButton />

@@ -4,9 +4,11 @@ import { shallow } from 'enzyme';
 import { DetailsPage } from '../details';
 
 describe('details-page', () => {
-  it('Snapshot button', () => {
-    const button = shallow(<DetailsPage />);
+  describe('snapshot', () => {
+    it('details page', () => {
+      const component = shallow(<DetailsPage />);
 
-    expect(button).toMatchSnapshot();
-  })
-})
+      expect(component).toMatchSnapshot();
+    });
+  });
+});

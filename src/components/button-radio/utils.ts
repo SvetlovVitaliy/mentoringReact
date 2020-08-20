@@ -7,16 +7,12 @@ export function getCurrentOrder(sortOrder: TSortingOrder): TSortingOrder {
   return TSortingOrder.ASK;
 }
 
-export function handleChangeSorting(changeSorting: Function | undefined, param: string = TSortingOrder.ASK) {
-  changeSorting && changeSorting(param);
-}
-
 export function handleClickButtonRadio(
   param: any,
   activeTab: string,
   sortOrder: TSortingOrder,
   onPress: Function,
-  changeSorting: Function | undefined
+  changeSorting: Function,
 ) {
   const hasParam = param !== activeTab;
   const hasSortOrder = sortOrder !== TSortingOrder.ASK;
@@ -25,9 +21,9 @@ export function handleClickButtonRadio(
   if (hasParam) {
     onPress(param);
     if (hasSortOrder) {
-      handleChangeSorting(changeSorting);
+      changeSorting(TSortingOrder.ASK);
     }
   } else {
-    handleChangeSorting(changeSorting, currentOrder);
+    changeSorting(currentOrder);
   }
 }

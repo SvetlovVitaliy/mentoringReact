@@ -1,1 +1,1 @@
-export { ConnectButtonRadio as ButtonRadio } from './connect-button-radio';
+export { ButtonRadio } from './button-radio';

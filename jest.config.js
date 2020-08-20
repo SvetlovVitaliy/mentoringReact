@@ -3,6 +3,7 @@ module.exports = {
   // transform: {
   //   "^.+\\.tsx?$": "ts-jest"
   // },
+  verbose: true,
   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(j|t)sx?$",
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   testEnvironment: "node",
@@ -16,6 +17,7 @@ module.exports = {
   moduleNameMapper: {
     "^.+\\.(scss|css|svg|png|sass)$": "identity-obj-proxy"
   },
+  testEnvironment: "jsdom",
 
   // Setup Enzyme
   snapshotSerializers: ["enzyme-to-json/serializer"],
