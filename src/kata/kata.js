@@ -32,3 +32,93 @@ function baseFinder(seq){
 //   if (seq.includes('2')) return 3
 //   return 2
 // }
+
+//There must be a function for each number from 0 ("zero") to 9 ("nine")
+//There must be a function for each of the following mathematical operations: plus, minus, times, dividedBy (divided_by in Ruby and Python)
+//Each calculation consist of exactly one operation and two numbers
+//The most outer function represents the left operand, the most inner function represents the right operand
+//Divison should be integer division. For example, this should return 2, not 2.666666...:
+
+function zero(func) {
+  let n = 0;
+  if(func) {
+    return func(n);
+  }
+  return n;
+}
+function one(func) {
+    let n = 1;
+  if(func) {
+    return func(n);
+  }
+  return n;
+}
+function two(func) {
+    let n = 2;
+  if(func) {
+    return func(n);
+  }
+  return n;
+}
+function three(func) {
+    let n = 3;
+  if(func) {
+    return func(n);
+  }
+  return n;
+}
+function four(func) {
+    let n = 4;
+  if(func) {
+    return func(n);
+  }
+  return n;
+}
+function five(func) {
+    let n = 5;
+  if(func) {
+    return func(n);
+  }
+  return n;
+}
+function six(func) {
+    let n = 6;
+  if(func) {
+    return func(n);
+  }
+  return n;
+}
+function seven(func) {
+    let n = 7;
+  if(func) {
+    return func(n);
+  }
+  return n;
+}
+function eight(func) {
+    let n = 8;
+  if(func) {
+    return func(n);
+  }
+  return n;
+}
+function nine(func) {
+    let n = 9;
+  if(func) {
+    return func(n);
+  }
+  return n;
+}
+
+function plus(num) {
+  return (a) => num + a;
+}
+function minus(num) {
+  return (a) => a - num;
+}
+function times(num) {
+  return (a) => num * a;
+}
+function dividedBy(num) {
+  return (a) => Math.floor(a/num)
+}
